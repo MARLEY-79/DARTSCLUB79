@@ -4866,6 +4866,7 @@ function initFirebase() {
         }
         if (doc.exists) {
           const data = doc.data();
+          _checkNewMatches(data);
           _applyFirebaseData(data);
           recomputeElo();
           renderAll();
@@ -13854,12 +13855,8 @@ window.addEventListener('appinstalled', () => {
   document.getElementById('pwa-install-banner').classList.remove('show');
 });
 
-// ── Surcharge de _applyFirebaseData pour détecter nouveaux matchs ──
-const _origApplyFirebaseData = _applyFirebaseData;
-function _applyFirebaseData(data) {
-  _checkNewMatches(data);
-  _origApplyFirebaseData(data);
-}
+// ── Détection de nouveaux matchs intégrée directement dans le callback Firebase ──
+// (l'ancienne surcharge causait une boucle infinie à cause du hoisting JS)
 
 // ── Initialisation de toutes les nouvelles fonctionnalités ──
 (function initNewFeatures() {
