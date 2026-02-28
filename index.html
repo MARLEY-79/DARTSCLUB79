@@ -12018,7 +12018,15 @@ function scConfirmX01() {
     }
   }
 
+  // Checkout attempt : vérifier sur le score AVANT la volée
+  // Zone ≤ 170 (max théorique en double-out)
+  const _scoreBeforeThrow = p.score;
+  if (_scoreBeforeThrow <= 170 && _scoreBeforeThrow > 1) {
+    p.checkoutAttempts = (p.checkoutAttempts || 0) + 1;
+  }
+
   p.dartsThrown = (p.dartsThrown || 0) + darts.length;
+  p.cumulativeDarts = (p.cumulativeDarts || 0) + darts.length;
 
   if (isBust) {
     p.bust = true;
@@ -12042,6 +12050,8 @@ function scConfirmX01() {
   }
 
   p.score = newScore;
+  // Cumuler le score réduit (pour moyenne multi-legs)
+  p.cumulativeReduced = (p.cumulativeReduced || 0) + total;
 
   // Pulse the score display
   setTimeout(() => {
@@ -12062,10 +12072,7 @@ function scConfirmX01() {
   }
   // Track best visit
   if (!p.bestVisit || total > p.bestVisit) p.bestVisit = total;
-  // Track checkout attempt
-  if (p.score <= 170 && p.score > 0 && (p.score <= 40 || p.score === 50)) {
-    p.checkoutAttempts = (p.checkoutAttempts||0) + 1;
-  }
+  // (checkout attempt déjà compté avant la mise à jour du score)
 
   const dartStrs = darts.map(d => {
     const v = d.val === 'bull' ? '🎯' : d.val === 0 ? '✕' : (d.mult>1?(d.mult===2?'D':'T'):'')+d.val;
@@ -12084,7 +12091,10 @@ function scConfirmX01() {
       // New leg
       const start = parseInt(scState.game);
       scState.players.forEach(pp2 => {
-        pp2.score = start; pp2.dartsThrown = 0; pp2.entered = opts.doubleIn ? false : true;
+        pp2.score = start;
+        pp2.dartsThrown = 0; // reset pour ce leg uniquement
+        // cumulativeDarts et cumulativeReduced persistent entre les legs
+        pp2.entered = opts.doubleIn ? false : true;
       });
       showNotif(`🏆 ${p.name} remporte ce leg !`, 'win');
     }
@@ -12367,10 +12377,22 @@ function scConfirmX01Total() {
     return;
   }
   if (newScore === 1) { showNotif('⚠ Impossible, reste 1 point (pas de double possible)'); return; }
+  // Checkout attempt en mode total
+  if (p.score <= 170 && p.score > 1) {
+    p.checkoutAttempts = (p.checkoutAttempts || 0) + 1;
+  }
   p.score = newScore;
+  p.cumulativeReduced = (p.cumulativeReduced || 0) + total;
+  p.cumulativeDarts = (p.cumulativeDarts || 0) + 3;
+  p.dartsThrown = (p.dartsThrown || 0) + 3;
+  // Track 180 et meilleure volée en mode total
+  if (total === 180) {
+    p.count180 = (p.count180 || 0) + 1;
+    showNotif('💯 180 ! Volée parfaite !');
+  }
+  if (!p.bestVisit || total > p.bestVisit) p.bestVisit = total;
   p.history = p.history || [];
   p.history.push(total);
-  p.darts = (p.darts || 0) + 3;
   scState._x01TotalInput = '';
   scState.darts = [];
   scUpdateLiveStats();
@@ -12445,9 +12467,11 @@ function scEndGame(winnerIdx) {
   const game = scState.game;
   let statsHtml = '';
   if (['501','301','701'].includes(game)) {
-    const avg = p.dartsThrown > 0 ? (((p.startScore - p.score) / p.dartsThrown) * 3).toFixed(1) : '—';
+    const _wd = p.cumulativeDarts || p.dartsThrown || 0;
+    const _wr = p.cumulativeReduced || (p.startScore - p.score);
+    const avg = _wd > 0 ? (_wr / _wd * 3).toFixed(1) : '—';
     statsHtml = `
-      <div class="sc-wstat"><div class="sc-wstat-val">${p.dartsThrown||0}</div><div class="sc-wstat-lbl">Fléchettes</div></div>
+      <div class="sc-wstat"><div class="sc-wstat-val">${_wd}</div><div class="sc-wstat-lbl">Fléchettes</div></div>
       <div class="sc-wstat"><div class="sc-wstat-val">${avg}</div><div class="sc-wstat-lbl">Moyenne</div></div>
       <div class="sc-wstat"><div class="sc-wstat-val">${p.legsWon||1}</div><div class="sc-wstat-lbl">Legs gagnés</div></div>
     `;
@@ -13424,7 +13448,12 @@ function scUpdateLiveStats() {
   if (!['501','301','701'].includes(game)) { strip.style.display = 'none'; return; }
   strip.style.display = 'flex';
   var p = scState.players[scState.currentPlayer];
-  var avg = p.dartsThrown > 0 ? (((p.startScore - p.score) / p.dartsThrown) * 3).toFixed(1) : '—';
+  // Moyenne cumulée multi-legs : score total réduit / fléchettes totales * 3
+  var _totalDarts = (p.cumulativeDarts || 0) + (p.dartsThrown || 0);
+  var _totalReduced = (p.cumulativeReduced || 0);
+  // Ajouter ce qui est en cours (score de départ du leg - score actuel)
+  var _legReduced = p.startScore - p.score;
+  var avg = _totalDarts > 0 ? ((_totalReduced + (_legReduced > 0 ? _legReduced : 0)) / _totalDarts * 3).toFixed(1) : '—';
   var best = p.bestVisit || '—';
   var count180 = p.count180 || 0;
   var checkAttempts = p.checkoutAttempts || 0;
@@ -13455,7 +13484,9 @@ function scBuildRecap() {
   if (!recapGrid || !['501','301','701'].includes(game)) { if(recapGrid) recapGrid.style.display='none'; return; }
   recapGrid.style.display = 'grid';
   recapGrid.innerHTML = scState.players.map(function(p, i) {
-    var avg = p.dartsThrown > 0 ? (((p.startScore - p.score) / p.dartsThrown) * 3).toFixed(1) : '—';
+    var _td = p.cumulativeDarts || p.dartsThrown || 0;
+    var _tr = p.cumulativeReduced || (p.startScore - p.score);
+    var avg = _td > 0 ? (_tr / _td * 3).toFixed(1) : '—';
     var isWinner = i === scState.winner;
     var coStr = (p.checkoutAttempts||0) > 0 ? Math.round((p.checkoutHits||0)/(p.checkoutAttempts||1)*100) + '%' : '—';
     return '<div class="sc-recap-card ' + (isWinner?'winner-card':'') + '">'
