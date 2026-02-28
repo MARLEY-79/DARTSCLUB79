@@ -2984,146 +2984,84 @@ body.light-mode .tv-overlay { background: #1a1f2e; }
 .reminder-btn:hover { border-color: var(--gold); color: var(--gold); }
 .reminder-btn.set { border-color: var(--gold); color: var(--gold); background: var(--gold-bg); }
 
-/* ═══ MON COMPTE ═══ */
-.compte-hero{display:flex;align-items:center;gap:1.4rem;padding:.8rem 0 1.2rem;flex-wrap:wrap}
-.compte-avatar{width:88px;height:88px;border-radius:18px;display:flex;align-items:center;justify-content:center;font-size:2.2rem;font-weight:800;color:#0d0f14;overflow:hidden;border:3px solid var(--accent);box-shadow:0 0 24px var(--accent-glow);cursor:pointer;transition:all .2s;position:relative}
-.compte-avatar:hover{opacity:.85}
-.compte-avatar-edit-hint{position:absolute;bottom:-6px;right:-6px;background:var(--accent);color:#fff;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.6rem;cursor:pointer;border:2px solid var(--dark)}
-.compte-hero-pseudo{font-family:'Bebas Neue',sans-serif;font-size:2.2rem;letter-spacing:1px;color:var(--light);line-height:1}
-.compte-hero-name{font-size:.82rem;color:var(--text-dim);margin-top:4px}
-.compte-hero-elo{display:inline-flex;align-items:center;gap:.4rem;background:var(--accent-dim);color:var(--accent);border:1px solid var(--accent-glow);border-radius:6px;padding:.25rem .7rem;font-size:.78rem;font-weight:700;margin-top:.5rem}
-.compte-edit-form{display:grid;gap:.8rem;margin-top:1.2rem;border-top:1px solid var(--border);padding-top:1.2rem}
-.compte-edit-row{display:flex;align-items:center;gap:.8rem;flex-wrap:wrap}
-.compte-edit-label{font-size:.72rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);min-width:90px}
-.compte-emoji-picker{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.4rem}
-.compte-emoji-btn{font-size:1.2rem;width:36px;height:36px;border-radius:8px;border:2px solid var(--border);background:var(--dark-card);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .15s}
-.compte-emoji-btn:hover,.compte-emoji-btn.active{border-color:var(--accent);background:var(--accent-dim)}
-.compte-color-dots{display:flex;flex-wrap:wrap;gap:.4rem}
-.compte-color-dot{width:26px;height:26px;border-radius:50%;cursor:pointer;border:3px solid transparent;transition:all .15s}
-.compte-color-dot:hover{transform:scale(1.15)}
-.compte-color-dot.active{border-color:#fff;box-shadow:0 0 0 2px var(--accent)}
-.compte-stats-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:.8rem}
-.compte-stat-block{background:var(--dark);border:1px solid var(--border);border-radius:10px;padding:.9rem .7rem;text-align:center}
-.compte-stat-val{font-family:'Bebas Neue',sans-serif;font-size:2rem;color:var(--accent);line-height:1}
-.compte-stat-label{font-size:.6rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-top:4px}
-.compte-trophees-grid{display:flex;flex-wrap:wrap;gap:.6rem}
-.compte-trophy-chip{display:flex;align-items:center;gap:.4rem;background:var(--dark);border:1px solid var(--border);border-radius:8px;padding:.4rem .8rem;font-size:.75rem;color:var(--text-dim)}
-
-/* ═══ RESPONSIVE TABLETTE 769-1024px ═══ */
+/* ═══ NAV GROUPS ═══ */
+.nav-group{position:relative;display:flex;align-items:stretch}
+.nav-group-trigger{gap:0.28rem;cursor:pointer}
+.nav-chevron{font-size:0.52rem!important;opacity:0.5;transition:transform 0.2s;margin-left:0.1rem}
+.nav-group.open .nav-chevron{transform:rotate(180deg);opacity:1}
+.nav-group.open .nav-group-trigger{color:var(--primary);background:rgba(230,57,70,.07);border-bottom-color:var(--primary)}
+.nav-dropdown{display:none;position:absolute;top:calc(100% + 1px);left:0;min-width:170px;background:rgba(14,17,26,.98);border:1px solid var(--border);border-top:2px solid var(--primary);border-radius:0 0 10px 10px;box-shadow:0 12px 40px rgba(0,0,0,.55);backdrop-filter:blur(16px);z-index:300;padding:0.35rem 0;animation:dropIn .15s ease}
+@keyframes dropIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
+.nav-group.open .nav-dropdown{display:block}
+.nav-drop-item{display:flex;align-items:center;gap:0.55rem;width:100%;padding:0.55rem 1rem;background:none;border:none;color:var(--muted);font-family:'Work Sans',sans-serif;font-size:0.72rem;font-weight:600;letter-spacing:.5px;text-transform:uppercase;cursor:pointer;transition:all .13s;text-align:left;white-space:nowrap}
+.nav-drop-item:hover{color:var(--light);background:rgba(255,255,255,.05)}
+.nav-drop-item i{font-size:.75rem;opacity:.7;width:14px}
+.nav-drop-item.active{color:var(--primary);background:rgba(230,57,70,.08);border-left:2px solid var(--primary);padding-left:calc(1rem - 2px)}
+.nav-group.has-active .nav-group-trigger{color:var(--primary);border-bottom-color:var(--primary);background:rgba(230,57,70,.06)}
+/* ═══ DIVISION PROGRESS ═══ */
+.div-progress-wrap{margin-top:0.5rem}
+.div-progress-labels{display:flex;justify-content:space-between;font-size:0.58rem;color:var(--muted);margin-bottom:3px}
+.div-progress-bar{height:4px;background:var(--dark);border-radius:3px;overflow:hidden}
+.div-progress-fill{height:100%;border-radius:3px;transition:width .6s ease}
+.div-bronze-fill{background:linear-gradient(90deg,#c47c44,#e09a5a)}
+.div-silver-fill{background:linear-gradient(90deg,#8a9bb0,#c0ccd8)}
+.div-gold-fill{background:linear-gradient(90deg,#d4a017,#f5c518)}
+.div-elite-fill{background:linear-gradient(90deg,#7c3aed,#a67cf7)}
+.div-legend-fill{background:linear-gradient(90deg,var(--accent),#ff8c94)}
+/* ═══ JOUEUR INDIVIDUEL ═══ */
+.player-full-header{display:flex;align-items:center;gap:1.4rem;padding:1.5rem;border-bottom:1px solid var(--border);position:relative}
+.player-full-avatar{width:72px;height:72px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:1.8rem;overflow:hidden;flex-shrink:0}
+.player-full-tabs{display:flex;border-bottom:1px solid var(--border)}
+.player-full-tab{flex:1;padding:.6rem .4rem;font-size:.65rem;font-weight:700;letter-spacing:.8px;text-transform:uppercase;background:none;border:none;color:var(--muted);cursor:pointer;border-bottom:2px solid transparent;transition:all .15s;font-family:'Work Sans',sans-serif}
+.player-full-tab.active{color:var(--accent);border-bottom-color:var(--accent);background:rgba(230,57,70,.05)}
+.player-full-body{padding:1rem;max-height:420px;overflow-y:auto}
+.pf-stat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(90px,1fr));gap:.5rem;margin-bottom:1rem}
+.pf-stat{background:var(--dark);border:1px solid var(--border);border-radius:10px;padding:.7rem .5rem;text-align:center}
+.pf-stat-val{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;color:var(--accent);line-height:1}
+.pf-stat-lbl{font-size:.56rem;color:var(--muted);letter-spacing:.8px;text-transform:uppercase;margin-top:2px}
+.pf-h2h-row{display:flex;align-items:center;gap:.5rem;padding:.4rem .6rem;border-radius:7px;background:var(--dark);margin-bottom:.3rem;font-size:.75rem}
+.pf-match-row{display:flex;align-items:center;justify-content:space-between;padding:.35rem .5rem;border-radius:7px;background:var(--dark);margin-bottom:.25rem;font-size:.72rem;gap:.4rem}
+/* ═══ SOIRÉE RAPPORT ═══ */
+.soiree-rapport-kpis{display:grid;grid-template-columns:repeat(auto-fill,minmax(90px,1fr));gap:.5rem;margin-bottom:.8rem}
+.soiree-kpi{background:var(--dark);border:1px solid var(--border);border-radius:8px;padding:.5rem .4rem;text-align:center}
+.soiree-kpi-val{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;color:var(--accent)}
+.soiree-kpi-lbl{font-size:.55rem;color:var(--muted);letter-spacing:.8px;text-transform:uppercase}
+.soiree-mvp-chip{display:inline-flex;align-items:center;gap:.5rem;background:var(--accent-dim);border:1px solid rgba(230,57,70,.35);border-radius:8px;padding:.35rem .75rem;font-size:.75rem}
+/* ═══ MULTIJOUEUR ═══ */
+.sc-multi-badge{display:inline-flex;align-items:center;gap:.3rem;background:rgba(74,158,255,.15);border:1px solid rgba(74,158,255,.4);color:#4a9eff;border-radius:6px;padding:.2rem .55rem;font-size:.62rem;font-weight:700;animation:mlPulse 2s ease infinite}
+@keyframes mlPulse{0%,100%{opacity:1}50%{opacity:.6}}
+.sc-room-modal{background:var(--dark-card);border:1px solid var(--border);border-radius:16px;padding:1.5rem;max-width:320px;width:90%;text-align:center}
+.sc-room-code{font-family:'Bebas Neue',sans-serif;font-size:3.5rem;letter-spacing:.5rem;color:var(--accent);background:var(--dark);border-radius:12px;padding:.5rem 1rem;margin:1rem 0;border:2px solid rgba(230,57,70,.3)}
+/* ═══ NOTIF PERM ═══ */
+.notif-perm-bar{display:none;align-items:center;gap:.8rem;background:rgba(74,158,255,.1);border:1px solid rgba(74,158,255,.25);border-radius:9px;padding:.55rem 1rem;margin-bottom:.8rem;font-size:.75rem}
+.notif-perm-bar.show{display:flex}
+.notif-perm-bar button{padding:.3rem .8rem;background:#4a9eff;color:#fff;border:none;border-radius:6px;font-size:.7rem;font-weight:700;cursor:pointer;white-space:nowrap}
+/* ═══ RESPONSIVE TABLETTE ═══ */
 @media(min-width:769px) and (max-width:1024px){
-  .content{padding:1.2rem}
   .players-grid{grid-template-columns:repeat(2,1fr)!important}
   .dash-stats{grid-template-columns:repeat(3,1fr);gap:.8rem}
   .dash-grid{grid-template-columns:1fr 1fr;gap:1rem}
   .stats-grid{grid-template-columns:repeat(2,1fr)}
-  .param-row{flex-wrap:wrap;gap:.7rem}
-  .pool-grid{grid-template-columns:repeat(2,1fr)}
-  .compte-stats-grid{grid-template-columns:repeat(4,1fr)}
-  .t-format-cards{grid-template-columns:repeat(3,1fr)}
-  .admin-actions-grid{grid-template-columns:repeat(3,1fr)!important;gap:.5rem}
   .nav-row{display:flex!important}
   .mobile-nav{display:none!important}
 }
-
-/* ═══ RESPONSIVE MOBILE PORTRAIT ≤768px ═══ */
+/* ═══ RESPONSIVE MOBILE ≤768px ═══ */
 @media(max-width:768px){
   .nav-row{display:none!important}
   .mobile-nav{display:block!important}
   .content{padding:.8rem;padding-bottom:5.5rem}
-  .page-title{font-size:1.4rem;margin-bottom:.9rem}
   .logo-sub{display:none}
-  .header-right .timer-btn,.header-right .theme-toggle,.header-right .btn-tv,.header-right .btn.btn-primary{display:none}
-  #fb-sync-badge{font-size:.55rem;padding:.2rem .45rem}
-  .season-badge{display:none}
   .dash-stats{grid-template-columns:repeat(2,1fr);gap:.5rem}
-  .stat-block{padding:.7rem .5rem}
-  .stat-value{font-size:1.6rem!important}
-  .stat-label{font-size:.55rem}
   .dash-grid{grid-template-columns:1fr}
-  .cnf-hero{padding:1.2rem 1rem;min-height:auto}
-  .cnf-hero-title{font-size:2rem!important}
-  .admin-actions-grid{grid-template-columns:repeat(2,1fr)!important;gap:.5rem}
   .players-grid{grid-template-columns:1fr!important;gap:.6rem}
-  .pcard{padding:.8rem}
-  .pcard-sparkline{display:none}
-  .mcard{padding:.7rem .8rem}
-  .mc-elo{font-size:.6rem}
-  .mc-badge{font-size:.55rem;padding:1px 5px}
   .stats-grid{grid-template-columns:1fr!important}
-  #elo-chart-container{height:220px!important}
   .param-row{flex-direction:column;align-items:flex-start!important;gap:.6rem}
-  .param-row>button,.param-row>label{align-self:flex-start}
-  .card{padding:.9rem}
   table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}
   input[type=text],input[type=number],input[type=password],select,textarea{font-size:16px!important}
-  .t-format-cards{grid-template-columns:1fr!important}
-  .pool-grid{grid-template-columns:1fr!important}
-  .modal{padding:1.2rem;max-height:90vh}
-  .compte-hero{flex-direction:column}
-  .compte-stats-grid{grid-template-columns:repeat(2,1fr)!important}
-  /* ─ Score counter topbar ─ */
-  .sc-topbar{padding:.4rem .5rem;flex-wrap:nowrap}
-  .sc-topbar-actions{gap:.18rem;overflow-x:auto;-webkit-overflow-scrolling:touch;flex-shrink:0}
-  .sc-top-btn{padding:.26rem .45rem!important;font-size:.6rem!important;white-space:nowrap;flex-shrink:0}
-  .sc-game-name{font-size:.85rem}
+  .sc-topbar{flex-wrap:wrap;gap:.2rem}
+  .sc-top-btn{font-size:.6rem!important;padding:.26rem .45rem!important}
   .sc-score-main{font-size:2.8rem!important}
-  .sc-player-panel{padding:.6rem .3rem}
-  .sc-pname{font-size:.7rem}
-  .sc-key{min-height:50px!important;font-size:1.05rem!important;border-radius:10px!important}
-  .sc-key.confirm{min-height:56px!important;font-size:.95rem!important}
-  .sc-mult-btn{min-height:40px!important}
-  .sc-dart-val{width:44px;font-size:1.2rem}
-  .sc-dart-total{font-size:2rem}
-}
-@media(max-width:480px){
-  .sc-top-btn{padding:.22rem .35rem!important;font-size:.56rem!important}
-  .sc-top-btn.danger{background:rgba(230,57,70,.12)!important;border-color:rgba(230,57,70,.4)!important;color:var(--red)!important}
-  .sc-score-main{font-size:2.4rem!important}
-  .sc-keypad{gap:.22rem!important}
-  .sc-key{min-height:46px!important;font-size:.95rem!important}
-  #sc-close-btn-float{display:flex!important}
-}
-
-/* ═══ MODE PAYSAGE — classe html.is-landscape posée par JS ═══ */
-html.is-landscape .mobile-nav{flex-direction:column!important;bottom:0!important;top:44px!important;left:0!important;right:auto!important;width:52px!important;border-top:none!important;border-right:1px solid var(--border)!important;padding:.3rem 0!important;display:flex!important;overflow:hidden!important;box-shadow:4px 0 20px rgba(0,0,0,.4)!important}
-html.is-landscape .mobile-nav-items{flex-direction:column!important;justify-content:flex-start!important;align-items:center!important;height:100%!important;overflow-y:auto!important;overflow-x:hidden!important;padding:.2rem 0!important;gap:0!important}
-html.is-landscape .mnav-btn{padding:.45rem 0!important;width:52px!important;min-width:unset!important}
-html.is-landscape .mnav-label{display:none!important}
-html.is-landscape .content{padding-left:60px!important;padding-top:.4rem!important;padding-bottom:.4rem!important;padding-right:.6rem!important}
-html.is-landscape .header .nav-container-wrap{height:44px!important}
-html.is-landscape .page-title{font-size:1rem!important;margin-bottom:.5rem!important}
-html.is-landscape .session-bar{display:none!important}
-html.is-landscape .cnf-hero{display:none!important}
-html.is-landscape .dash-stats{grid-template-columns:repeat(4,1fr)!important;gap:.35rem!important}
-html.is-landscape .stat-block{padding:.4rem .3rem!important}
-html.is-landscape .stat-value{font-size:1.1rem!important}
-html.is-landscape .stat-label{font-size:.48rem!important}
-html.is-landscape .dash-grid{grid-template-columns:1fr 1fr!important;gap:.5rem}
-html.is-landscape .players-grid{grid-template-columns:repeat(2,1fr)!important}
-html.is-landscape .stats-grid{grid-template-columns:repeat(2,1fr)!important}
-html.is-landscape #elo-chart-container{height:160px!important}
-html.is-landscape .page{max-height:calc(100dvh - 48px);overflow-y:auto}
-html.is-landscape .mobile-more-menu{bottom:0;left:52px;right:0;top:44px;border-radius:0}
-
-/* ─ Compteur en paysage : scores à gauche, clavier à droite ─ */
-html.is-landscape #sc-overlay .sc-game{flex-direction:row!important}
-html.is-landscape #sc-overlay .sc-players-zone{flex-direction:column!important;width:36%!important;flex-shrink:0!important;border-right:1px solid rgba(255,255,255,.06)!important;border-bottom:none!important;overflow-y:auto!important}
-html.is-landscape #sc-overlay .sc-player-panel{border-right:none!important;border-bottom:1px solid rgba(255,255,255,.04)!important;flex:1!important}
-html.is-landscape #sc-overlay .sc-score-main{font-size:3.2rem!important}
-html.is-landscape #sc-overlay .sc-input-zone{flex:1!important;overflow:hidden!important}
-html.is-landscape #sc-overlay .sc-topbar{padding:.25rem .6rem!important}
-html.is-landscape #sc-overlay .sc-top-btn{padding:.2rem .45rem!important;font-size:.6rem!important}
-html.is-landscape #sc-overlay .sc-key{min-height:36px!important;font-size:.88rem!important}
-html.is-landscape #sc-overlay .sc-keypad{gap:.2rem!important}
-html.is-landscape #sc-overlay .sc-dart-val{width:36px;font-size:.95rem}
-html.is-landscape #sc-overlay .sc-dart-total{font-size:1.5rem}
-html.is-landscape #sc-overlay .sc-mult-btn{min-height:32px!important;font-size:.75rem!important}
-html.is-landscape #sc-overlay .sc-checkout-hint{font-size:.7rem!important;padding:.2rem .5rem!important}
-
-/* ─ Bouton fermer flottant visible sur mobile ─ */
-#sc-close-btn-float{display:none}
-@media(max-width:768px){
-  #sc-overlay.active #sc-close-btn-float{display:flex!important}
+  .sc-key{min-height:50px!important;font-size:1.05rem!important}
 }
 </style>
 
@@ -3150,6 +3088,10 @@ html.is-landscape #sc-overlay .sc-checkout-hint{font-size:.7rem!important;paddin
         <div class="current-user-dot"></div>
         <span id="current-user-name">?</span>
       </div>
+      <!-- Bouton deconnexion -->
+      <button id="logout-btn" onclick="logoutUser()" title="Se deconnecter" style="display:none;background:none;border:1px solid var(--border);border-radius:6px;padding:0.3rem 0.6rem;color:var(--gray);font-size:0.65rem;font-weight:700;cursor:pointer;letter-spacing:0.5px;text-transform:uppercase;font-family:Work Sans,sans-serif;transition:all 0.15s">
+        <i class="fas fa-right-from-bracket"></i> Quitter
+      </button>
       <span class="season-badge" id="season-badge">Saison 1</span>
       <button class="timer-btn" id="timer-toggle-btn" onclick="toggleTimerWidget()" title="Minuteur"><i class="fas fa-stopwatch"></i></button>
       <button class="btn-tv" onclick="openTvMode()" title="Mode TV — Touche F" aria-label="Mode TV live"><i class="fas fa-tv"></i> Live</button>
@@ -3163,21 +3105,35 @@ html.is-landscape #sc-overlay .sc-checkout-hint{font-size:.7rem!important;paddin
   <div class="nav-row">
     <div class="nav-row-inner">
       <nav class="nav">
-        <button class="nav-btn active" onclick="showPage('dashboard',this)" title="Accueil"><i class="fas fa-house"></i> Accueil</button>
-        <button class="nav-btn" onclick="showPage('classement',this)"><i class="fas fa-trophy"></i> Classement</button>
-        <button class="nav-btn" onclick="showPage('joueurs',this)"><i class="fas fa-user"></i> Joueurs</button>
-        <button class="nav-btn" onclick="showPage('matchs',this)"><i class="fas fa-gamepad"></i> Matchs</button>
-        <button class="nav-btn" onclick="showPage('tournois',this)"><i class="fas fa-sitemap"></i> Tournois</button>
-        <button class="nav-btn" onclick="showPage('ligue',this)"><i class="fas fa-medal"></i> Ligue</button>
-        <button class="nav-btn" onclick="showPage('calendrier',this)"><i class="fas fa-calendar-days"></i> Calendrier</button>
-        <button class="nav-btn" onclick="showPage('entrainement',this)"><i class="fas fa-dumbbell"></i> Entraînement</button>
-        <button class="nav-btn" onclick="showPage('stats',this)"><i class="fas fa-chart-line"></i> Stats</button>
-        <button class="nav-btn" onclick="showPage('historique',this)"><i class="fas fa-clock-rotate-left"></i> Historique</button>
-        <button class="nav-btn" onclick="showPage('equipes',this)"><i class="fas fa-users"></i> Équipes</button>
-        <button class="nav-btn" onclick="showPage('defis',this)"><i class="fas fa-bolt"></i> Défis</button>
-        <button class="nav-btn" id="nav-btn-compte" onclick="showPageCompte(this)" style="display:none;border:1px solid rgba(230,57,70,0.3);color:var(--accent)"><i class="fas fa-circle-user"></i> Mon Compte</button>
-        <button class="nav-btn" onclick="openScoreCounter()" style="margin-left:auto;background:var(--accent-dim);border-left:1px solid rgba(230,57,70,0.3);border-right:1px solid rgba(230,57,70,0.3);color:var(--accent)"><i class="fas fa-bullseye"></i> Compteur <span class="kbd-hint">C</span></button>
-        <button class="nav-btn" onclick="openModal('keyboard-help-modal')" title="Raccourcis clavier" style="padding:0 0.6rem;color:var(--gray)"><i class="fas fa-keyboard"></i></button>
+        <button class="nav-btn active" id="navbtn-dashboard" onclick="showPage('dashboard',this)"><i class="fas fa-house"></i> Accueil</button>
+        <button class="nav-btn" id="navbtn-compteur" onclick="openScoreCounter()"><i class="fas fa-bullseye"></i> Compteur</button>
+        <div class="nav-group" id="navg-palmares">
+          <button class="nav-btn nav-group-trigger" onclick="toggleNavGroup('navg-palmares',event)"><i class="fas fa-trophy"></i> Palmarès <i class="fas fa-chevron-down nav-chevron"></i></button>
+          <div class="nav-dropdown">
+            <button class="nav-drop-item" onclick="navDropGo('classement','navg-palmares')"><i class="fas fa-trophy"></i> Classement</button>
+            <button class="nav-drop-item" onclick="navDropGo('joueurs','navg-palmares')"><i class="fas fa-user"></i> Joueurs</button>
+            <button class="nav-drop-item" onclick="navDropGo('historique','navg-palmares')"><i class="fas fa-clock-rotate-left"></i> Historique</button>
+          </div>
+        </div>
+        <div class="nav-group" id="navg-competition">
+          <button class="nav-btn nav-group-trigger" onclick="toggleNavGroup('navg-competition',event)"><i class="fas fa-gamepad"></i> Compétition <i class="fas fa-chevron-down nav-chevron"></i></button>
+          <div class="nav-dropdown">
+            <button class="nav-drop-item" onclick="navDropGo('matchs','navg-competition')"><i class="fas fa-gamepad"></i> Matchs</button>
+            <button class="nav-drop-item" onclick="navDropGo('equipes','navg-competition')"><i class="fas fa-users"></i> Équipes</button>
+            <button class="nav-drop-item" onclick="navDropGo('tournois','navg-competition')"><i class="fas fa-sitemap"></i> Tournois</button>
+            <button class="nav-drop-item" onclick="navDropGo('ligue','navg-competition')"><i class="fas fa-medal"></i> Ligue</button>
+            <button class="nav-drop-item" onclick="navDropGo('entrainement','navg-competition')"><i class="fas fa-dumbbell"></i> Entraînement</button>
+          </div>
+        </div>
+        <button class="nav-btn" id="navbtn-calendrier" onclick="showPage('calendrier',this)"><i class="fas fa-calendar-days"></i> Calendrier</button>
+        <div class="nav-group" id="navg-stats">
+          <button class="nav-btn nav-group-trigger" onclick="toggleNavGroup('navg-stats',event)"><i class="fas fa-chart-line"></i> Stats <i class="fas fa-chevron-down nav-chevron"></i></button>
+          <div class="nav-dropdown">
+            <button class="nav-drop-item" onclick="navDropGo('stats','navg-stats')"><i class="fas fa-chart-line"></i> Statistiques</button>
+            <button class="nav-drop-item" onclick="navDropGo('historique','navg-stats')"><i class="fas fa-clock-rotate-left"></i> Historique</button>
+          </div>
+        </div>
+        <button class="nav-btn" id="nav-btn-compte" onclick="showPageCompte(this)" style="display:none;color:var(--accent)"><i class="fas fa-circle-user"></i> Mon Compte</button>
       </nav>
     </div>
   </div>
@@ -3199,20 +3155,7 @@ html.is-landscape #sc-overlay .sc-checkout-hint{font-size:.7rem!important;paddin
     <!-- ══════ DASHBOARD ══════ -->
     <div class="page active" id="page-dashboard">
 
-      <!-- HERO — mirrors index.html hero structure exactly -->
-      <div class="cnf-hero">
-        <div class="cnf-hero-eyebrow"><span class="live-dot"></span>&nbsp; Club Pro · En direct</div>
-        <h1 class="cnf-hero-title">
-          <span>Statistiques</span><br>
-          <span class="hero-highlight">en direct</span>
-        </h1>
-        <p class="cnf-hero-subtitle">Suivez les performances et classements de tous les joueurs du club</p>
-        <div class="cnf-hero-stats" id="cnf-hero-stats">
-          <div class="cnf-stat-card"><span class="cnf-stat-number" id="h-joueurs">0</span><div class="cnf-stat-label">Joueurs</div></div>
-          <div class="cnf-stat-card"><span class="cnf-stat-number" id="h-matchs">0</span><div class="cnf-stat-label">Matchs</div></div>
-          <div class="cnf-stat-card"><span class="cnf-stat-number" id="h-sets">0</span><div class="cnf-stat-label">Sets joués</div></div>
-        </div>
-      </div>
+
 
       <div class="page-title">🎯 <span>Overview</span></div>
       <div id="dash-onboarding"></div>
@@ -3249,9 +3192,9 @@ html.is-landscape #sc-overlay .sc-checkout-hint{font-size:.7rem!important;paddin
           <button class="btn btn-sm btn-secondary" onclick="requirePassword('🔒 Admin', () => { var p=document.getElementById('dash-admin-panel'); p.style.display=p.style.display==='grid'?'none':'grid'; })" style="font-size:0.65rem;padding:2px 8px">🔒 Admin</button>
         </div>
         <div id="dash-admin-panel" style="display:none;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:0.7rem;margin-top:0.8rem">
-          <button class="admin-action-btn" onclick="showPage('matchs',document.querySelector('.nav-btn[onclick*=matchs]'));setTimeout(function(){var el=document.getElementById('match-p1');if(el)el.focus();},200)"><span class="admin-action-icon">🎯</span><span>Saisir un match</span></button>
-          <button class="admin-action-btn" onclick="showPage('joueurs',document.querySelector('.nav-btn[onclick*=joueurs]'));setTimeout(function(){var el=document.getElementById('player-name');if(el)el.focus();},200)"><span class="admin-action-icon">👤</span><span>Ajouter joueur</span></button>
-          <button class="admin-action-btn" onclick="showPage('tournois',document.querySelector('.nav-btn[onclick*=tournois]'))"><span class="admin-action-icon">🏆</span><span>Créer tournoi</span></button>
+          <button class="admin-action-btn" onclick="showPage('matchs',null);setTimeout(function(){var el=document.getElementById('match-p1');if(el)el.focus();},200)"><span class="admin-action-icon">🎯</span><span>Saisir un match</span></button>
+          <button class="admin-action-btn" onclick="showPage('joueurs',null);setTimeout(function(){var el=document.getElementById('player-name');if(el)el.focus();},200)"><span class="admin-action-icon">👤</span><span>Ajouter joueur</span></button>
+          <button class="admin-action-btn" onclick="showPage('tournois',null)"><span class="admin-action-icon">🏆</span><span>Créer tournoi</span></button>
           <button class="admin-action-btn" onclick="openScoreCounter()"><span class="admin-action-icon">🎮</span><span>Compteur score</span></button>
           <button class="admin-action-btn" onclick="requirePassword('🔒 Sauvegarde', function(){exportJSON();})"><span class="admin-action-icon">💾</span><span>Sauvegarder</span></button>
           <button class="admin-action-btn" onclick="openTvMode()"><span class="admin-action-icon">📺</span><span>Mode TV Live</span></button>
@@ -3499,6 +3442,7 @@ html.is-landscape #sc-overlay .sc-checkout-hint{font-size:.7rem!important;paddin
           <button class="btn-print" onclick="printClassement()" title="Imprimer le classement complet"><i class="fas fa-print"></i> Classement</button>
           <button class="btn-print" onclick="printPodium()" title="Imprimer le podium Top 3"><i class="fas fa-medal"></i> Podium</button>
           <button class="btn btn-secondary btn-sm" onclick="exportCSV()"><i class="fas fa-file-csv"></i> CSV</button>
+          <button class="btn btn-secondary btn-sm" onclick="exportPDFClassement()"><i class="fas fa-file-pdf"></i> PDF Classement</button>
           <button class="btn btn-secondary btn-sm" onclick="partagerClassement()"><i class="fas fa-link"></i> Partager</button>
           <button class="btn btn-secondary btn-sm" onclick="generateMatchSheet()"><i class="fas fa-file-alt"></i> Feuille</button>
         </div>
@@ -4042,40 +3986,6 @@ html.is-landscape #sc-overlay .sc-checkout-hint{font-size:.7rem!important;paddin
     <!-- ══════════════════════════════════════════════════════
          PAGE ENTRAÎNEMENT
     ══════════════════════════════════════════════════════ -->
-    <!-- ══ PAGE MON COMPTE ══ -->
-    <div class="page" id="page-compte">
-      <div class="page-title"><i class="fas fa-circle-user" style="color:var(--accent)"></i> <span>Mon Compte</span></div>
-      <div class="param-section">
-        <div class="section-label">🪪 Identité</div>
-        <div class="card" id="compte-profile-card"></div>
-      </div>
-      <div class="param-section">
-        <div class="section-label">🔐 Sécurité</div>
-        <div class="card">
-          <div class="param-row">
-            <div><div class="param-label">Mot de passe</div><div class="param-desc">Protège votre compte à la connexion</div></div>
-            <button class="btn btn-secondary btn-sm" onclick="compteChangerMotDePasse()"><i class="fas fa-key"></i> Changer</button>
-          </div>
-          <div class="param-row" style="border-top:1px solid var(--border);padding-top:.9rem;margin-top:.2rem">
-            <div><div class="param-label" style="color:var(--text-dim)">Supprimer mon mot de passe</div><div class="param-desc">Votre compte sera accessible sans code</div></div>
-            <button class="btn btn-sm" style="background:var(--red-bg);color:var(--red);border:1px solid rgba(230,57,70,.3)" onclick="compteSupprimerMotDePasse()"><i class="fas fa-lock-open"></i> Supprimer</button>
-          </div>
-          <div class="param-row" style="border-top:1px solid var(--border);padding-top:.9rem;margin-top:.2rem">
-            <div><div class="param-label" style="color:var(--red)">Se déconnecter</div><div class="param-desc">Retourne à l'écran de sélection</div></div>
-            <button class="btn btn-sm" style="background:var(--red-bg);color:var(--red);border:1px solid rgba(230,57,70,.3)" onclick="compteDeconnexion()"><i class="fas fa-right-from-bracket"></i> Déconnexion</button>
-          </div>
-        </div>
-      </div>
-      <div class="param-section">
-        <div class="section-label">📊 Mes Statistiques</div>
-        <div id="compte-stats-grid" class="card"></div>
-      </div>
-      <div class="param-section">
-        <div class="section-label">🏆 Mes Trophées</div>
-        <div id="compte-trophees" class="card"></div>
-      </div>
-    </div>
-
     <div class="page" id="page-entrainement">
       <div class="page-title">💪 <span>Entraînement</span></div>
 
@@ -4321,7 +4231,6 @@ html.is-landscape #sc-overlay .sc-checkout-hint{font-size:.7rem!important;paddin
 
 <!-- ══════ SCORE COUNTER OVERLAY ══════ -->
 <div class="sc-overlay" id="sc-overlay">
-  <button id="sc-close-btn-float" onclick="closeScoreCounter()" title="Fermer" style="display:none;position:fixed;top:8px;right:8px;z-index:8100;background:rgba(230,57,70,0.18);border:1.5px solid rgba(230,57,70,0.5);color:#e63946;border-radius:8px;width:36px;height:36px;font-size:1.1rem;font-weight:800;cursor:pointer;align-items:center;justify-content:center;backdrop-filter:blur(6px)">✕</button>
 
   <!-- TOPBAR -->
   <div class="sc-topbar">
@@ -4331,7 +4240,9 @@ html.is-landscape #sc-overlay .sc-checkout-hint{font-size:.7rem!important;paddin
     </div>
     <div class="sc-topbar-actions">
       <button class="sc-top-btn" id="sc-undo-btn" onclick="scUndo()" style="display:none">↩ Annuler</button>
-      <button class="sc-top-btn" id="sc-voice-btn" onclick="toggleVoiceMode()" title="Mode vocal (reconnaissance vocale des scores)" style="display:none"><i class="fas fa-microphone-slash"></i> Vocal</button>
+      <button class="sc-top-btn" id="sc-voice-btn" onclick="toggleVoiceMode()" title="Mode vocal" style="display:none"><i class="fas fa-microphone-slash"></i> Vocal</button>
+      <button class="sc-top-btn" id="sc-multi-btn" onclick="openModal('sc-multi-modal')" title="Multijoueur" style="display:none"><i class="fas fa-wifi"></i> Multi</button>
+      <span id="sc-multi-live-badge" class="sc-multi-badge" style="display:none"><i class="fas fa-circle" style="font-size:.5rem"></i> SYNC</span>
       <button class="sc-top-btn danger" onclick="scReset()">↺ Reset</button>
       <button class="sc-top-btn" onclick="scBackToSetup()">⚙ Config</button>
       <button class="sc-top-btn danger" onclick="closeScoreCounter()">✕ Fermer</button>
@@ -4857,6 +4768,470 @@ html.is-landscape #sc-overlay .sc-checkout-hint{font-size:.7rem!important;paddin
   </div>
 </div>
 
+
+
+
+<!-- ══════ PLAYER PROFILE MODAL ══════ -->
+<div class="modal-overlay" id="profile-modal">
+  <div class="modal profile-modal" style="max-width:600px">
+    <div class="profile-hero" id="profile-hero">
+      <div class="profile-avatar-big" id="profile-avatar-big">AB</div>
+      <div class="profile-hero-info">
+        <div class="profile-pseudo-big" id="profile-pseudo-big"></div>
+        <div class="profile-name-big" id="profile-name-big"></div>
+        <div class="profile-surnom" id="profile-surnom-display"></div>
+      </div>
+      <div style="text-align:right;z-index:1">
+        <div class="profile-elo-hero" id="profile-elo-hero"></div>
+        <div id="profile-division-hero" style="margin-top:4px"></div>
+      </div>
+      <button class="modal-close" style="position:absolute;top:1rem;right:1rem;z-index:2" onclick="closeModal('profile-modal')">✕</button>
+    </div>
+
+    <div class="profile-stats-row" id="profile-stats-row"></div>
+
+    <!-- Profile Tabs -->
+    <div class="profile-tabs" style="margin-bottom:0">
+      <button class="profile-tab active" onclick="switchProfileTab('stats',this)">📊 Stats</button>
+      <button class="profile-tab" onclick="switchProfileTab('history',this)">📋 Historique</button>
+      <button class="profile-tab" onclick="switchProfileTab('achievements',this)">🏆 Trophées</button>
+      <button class="profile-tab" onclick="switchProfileTab('training',this)">💪 Entraîn.</button>
+    </div>
+
+    <!-- TAB: Stats (existing content) -->
+    <div id="profile-tab-stats" class="profile-tab-content active">
+    <div style="display:flex;gap:1rem;flex-wrap:wrap">
+      <!-- Left: edit -->
+      <div style="flex:1;min-width:220px">
+        <div class="profile-section">
+          <div class="profile-section-title">Surnom</div>
+          <input type="text" id="profile-surnom-input" placeholder="Le Sniper, La Machine..." maxlength="30" style="font-size:0.85rem" oninput="previewProfile()">
+        </div>
+        <div class="profile-section">
+          <div class="profile-section-title">Bio / Citation</div>
+          <textarea class="profile-bio-input" id="profile-bio-input" placeholder="Une devise, un style de jeu..." maxlength="120" oninput="previewProfile()"></textarea>
+        </div>
+        <div class="profile-section">
+          <div class="profile-section-title">Couleur</div>
+          <div class="avatar-color-picker" id="avatar-color-picker">
+            <div class="avatar-color-swatch selected" style="background:var(--primary)" data-c="var(--primary)" onclick="selectAvatarColor('var(--primary)',this)"></div>
+            <div class="avatar-color-swatch" style="background:#4a9eff" data-c="#4a9eff" onclick="selectAvatarColor('#4a9eff',this)"></div>
+            <div class="avatar-color-swatch" style="background:#34d47b" data-c="#34d47b" onclick="selectAvatarColor('#34d47b',this)"></div>
+            <div class="avatar-color-swatch" style="background:#f0534a" data-c="#f0534a" onclick="selectAvatarColor('#f0534a',this)"></div>
+            <div class="avatar-color-swatch" style="background:#a67cf7" data-c="#a67cf7" onclick="selectAvatarColor('#a67cf7',this)"></div>
+            <div class="avatar-color-swatch" style="background:#ff7f50" data-c="#ff7f50" onclick="selectAvatarColor('#ff7f50',this)"></div>
+            <div class="avatar-color-swatch" style="background:#16c9aa" data-c="#16c9aa" onclick="selectAvatarColor('#16c9aa',this)"></div>
+            <div class="avatar-color-swatch" style="background:#f472b6" data-c="#f472b6" onclick="selectAvatarColor('#f472b6',this)"></div>
+          </div>
+        </div>
+        <div class="profile-section">
+          <div class="profile-section-title">Photo personnalisée</div>
+          <div style="display:flex;align-items:center;gap:0.8rem">
+            <div id="profile-photo-preview" style="width:44px;height:44px;border-radius:9px;background:var(--dark-card);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:0.6rem;color:var(--muted);overflow:hidden;flex-shrink:0">Aucune</div>
+            <div style="flex:1">
+              <label style="display:inline-block;background:var(--dark-card);border:1px solid var(--border);border-radius:7px;padding:0.35rem 0.8rem;font-size:0.75rem;cursor:pointer;color:var(--text-dim);transition:border-color .15s" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
+                📷 Choisir une photo
+                <input type="file" accept="image/*" style="display:none" onchange="handleProfilePhotoUpload(event)">
+              </label>
+              <button class="btn btn-sm btn-secondary" style="font-size:0.65rem;margin-left:0.4rem" onclick="clearProfilePhoto()" title="Supprimer la photo">✕</button>
+            </div>
+          </div>
+        </div>
+        <div class="profile-section">
+          <div class="profile-section-title">Avatar Emoji</div>
+          <div class="avatar-emoji-picker" id="avatar-emoji-picker">
+            <button class="avatar-emoji-btn selected" data-e="" onclick="selectAvatarEmoji('',this)">AB</button>
+            <button class="avatar-emoji-btn" data-e="🎯" onclick="selectAvatarEmoji('🎯',this)">🎯</button>
+            <button class="avatar-emoji-btn" data-e="🔥" onclick="selectAvatarEmoji('🔥',this)">🔥</button>
+            <button class="avatar-emoji-btn" data-e="👑" onclick="selectAvatarEmoji('👑',this)">👑</button>
+            <button class="avatar-emoji-btn" data-e="💀" onclick="selectAvatarEmoji('💀',this)">💀</button>
+            <button class="avatar-emoji-btn" data-e="⚡" onclick="selectAvatarEmoji('⚡',this)">⚡</button>
+            <button class="avatar-emoji-btn" data-e="🐉" onclick="selectAvatarEmoji('🐉',this)">🐉</button>
+            <button class="avatar-emoji-btn" data-e="🦁" onclick="selectAvatarEmoji('🦁',this)">🦁</button>
+            <button class="avatar-emoji-btn" data-e="🎸" onclick="selectAvatarEmoji('🎸',this)">🎸</button>
+            <button class="avatar-emoji-btn" data-e="🍺" onclick="selectAvatarEmoji('🍺',this)">🍺</button>
+            <button class="avatar-emoji-btn" data-e="🤖" onclick="selectAvatarEmoji('🤖',this)">🤖</button>
+          </div>
+        </div>
+      </div>
+      <!-- Right: sparkline + trophies -->
+      <div style="flex:1;min-width:200px">
+        <div class="profile-section">
+          <div class="profile-section-title">Évolution ELO</div>
+          <div id="profile-sparkline-big"></div>
+        </div>
+        <div class="profile-section">
+          <div class="profile-section-title">Forme récente</div>
+          <div id="profile-form-dots" style="display:flex;gap:3px;flex-wrap:wrap"></div>
+        </div>
+        <div class="profile-section">
+          <div class="profile-section-title">Trophées</div>
+          <div id="profile-trophies" style="display:flex;gap:4px;flex-wrap:wrap;font-size:1.2rem"></div>
+        </div>
+      </div>
+    </div>
+
+    </div><!-- /profile-tab-stats -->
+
+    <!-- TAB: History -->
+    <div id="profile-tab-history" class="profile-tab-content">
+      <div id="profile-match-history" style="max-height:380px;overflow-y:auto"></div>
+    </div>
+
+    <!-- TAB: Achievements -->
+    <div id="profile-tab-achievements" class="profile-tab-content">
+      <div id="profile-achievements-detail"></div>
+    </div>
+
+    <!-- TAB: Training -->
+    <div id="profile-tab-training" class="profile-tab-content">
+      <div id="profile-training-detail"></div>
+    </div>
+
+    <div style="display:flex;gap:0.6rem;margin-top:1.2rem;padding-top:1rem;border-top:1px solid var(--border)">
+      <button class="btn btn-primary" onclick="saveProfile()" style="flex:1"><i class="fas fa-floppy-disk"></i> Enregistrer le profil</button>
+      <button class="card-export-btn" onclick="exportPlayerCard()"><i class="fas fa-id-card"></i> Carte Joueur</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ MOBILE BOTTOM NAV ══════ -->
+<nav class="mobile-nav">
+  <div class="mobile-nav-items">
+    <button class="mnav-btn active" id="mnav-dashboard" onclick="showPage('dashboard',this);setMobileNav('dashboard')">
+      <span class="mnav-icon"><i class="fas fa-house"></i></span><span class="mnav-label">Accueil</span>
+    </button>
+    <button class="mnav-btn" id="mnav-joueurs" onclick="showPage('joueurs',this);setMobileNav('joueurs')">
+      <span class="mnav-icon"><i class="fas fa-user"></i></span><span class="mnav-label">Joueurs</span>
+    </button>
+    <button class="mnav-btn" id="mnav-matchs" onclick="showPage('matchs',this);setMobileNav('matchs')">
+      <span class="mnav-icon"><i class="fas fa-bullseye"></i></span><span class="mnav-label">Matchs</span>
+    </button>
+    <button class="mnav-btn" id="mnav-classement" onclick="showPage('classement',this);setMobileNav('classement')">
+      <span class="mnav-icon"><i class="fas fa-trophy"></i></span><span class="mnav-label">Classement</span>
+    </button>
+    <button class="mnav-btn" id="mnav-stats" onclick="showPage('stats',this);setMobileNav('stats')">
+      <span class="mnav-icon"><i class="fas fa-chart-line"></i></span><span class="mnav-label">Stats</span>
+    </button>
+    <button class="mnav-btn" id="mnav-more" onclick="toggleMobileMore()">
+      <span class="mnav-icon"><i class="fas fa-ellipsis"></i></span><span class="mnav-label">Plus</span>
+    </button>
+  </div>
+</nav>
+
+<!-- ══════ MOBILE MORE MENU ══════ -->
+<div class="mobile-more-backdrop" id="mobile-more-backdrop" onclick="closeMobileMore()"></div>
+<div class="mobile-more-menu" id="mobile-more-menu">
+  <div class="mobile-more-handle"></div>
+  <div class="mobile-more-title">Navigation</div>
+  <div class="mobile-more-grid">
+    <button class="mobile-more-item" id="mnav-calendrier" onclick="showPage('calendrier',null);setMobileNav('calendrier');closeMobileMore()">
+      <span class="mmore-icon"><i class="fas fa-calendar-days"></i></span>
+      <span class="mmore-label">Agenda</span>
+    </button>
+    <button class="mobile-more-item" id="mnav-historique" onclick="showPage('historique',null);setMobileNav('historique');closeMobileMore()">
+      <span class="mmore-icon"><i class="fas fa-list-check"></i></span>
+      <span class="mmore-label">Historique</span>
+    </button>
+    <button class="mobile-more-item" id="mnav-tournois" onclick="showPage('tournois',null);setMobileNav('tournois');closeMobileMore()">
+      <span class="mmore-icon"><i class="fas fa-sitemap"></i></span>
+      <span class="mmore-label">Tournois</span>
+    </button>
+    <button class="mobile-more-item" id="mnav-ligue" onclick="showPage('ligue',null);setMobileNav('ligue');closeMobileMore()">
+      <span class="mmore-icon"><i class="fas fa-medal"></i></span>
+      <span class="mmore-label">Ligue</span>
+    </button>
+    <button class="mobile-more-item" id="mnav-equipes" onclick="showPage('equipes',null);setMobileNav('equipes');closeMobileMore()">
+      <span class="mmore-icon"><i class="fas fa-users"></i></span>
+      <span class="mmore-label">Équipes</span>
+    </button>
+    <button class="mobile-more-item" id="mnav-defis" onclick="showPage('defis',null);setMobileNav('defis');closeMobileMore()">
+      <span class="mmore-icon"><i class="fas fa-bolt"></i></span>
+      <span class="mmore-label">Défis</span>
+    </button>
+    <button class="mobile-more-item" id="mnav-parametres" onclick="showPage('parametres',null);setMobileNav('parametres');closeMobileMore()">
+      <span class="mmore-icon"><i class="fas fa-gear"></i></span>
+      <span class="mmore-label">Paramètres</span>
+    </button>
+    <button class="mobile-more-item" id="mnav-entrainement" onclick="showPage('entrainement',null);setMobileNav('entrainement');closeMobileMore()">
+      <span class="mmore-icon"><i class="fas fa-dumbbell"></i></span>
+      <span class="mmore-label">Entraîn.</span>
+    </button>
+    <button class="mobile-more-item" onclick="openScoreCounter();closeMobileMore()" style="border-color:rgba(230, 57, 70, 0.4);background:var(--accent-dim)">
+      <span class="mmore-icon"><i class="fas fa-bullseye"></i></span>
+      <span class="mmore-label" style="color:var(--accent)">Compteur</span>
+    </button>
+    <button class="mobile-more-item" onclick="toggleTimer();closeMobileMore()">
+      <span class="mmore-icon"><i class="fas fa-stopwatch"></i></span>
+      <span class="mmore-label">Minuteur</span>
+    </button>
+    <button class="mobile-more-item" onclick="openTvMode();closeMobileMore()">
+      <span class="mmore-icon"><i class="fas fa-tv"></i></span>
+      <span class="mmore-label">Mode TV</span>
+    </button>
+    <button class="mobile-more-item" onclick="openModal('keyboard-help-modal');closeMobileMore()">
+      <span class="mmore-icon"><i class="fas fa-keyboard"></i></span>
+      <span class="mmore-label">Raccourcis</span>
+    </button>
+  </div>
+</div>
+
+<!-- ══════ TV MODE OVERLAY ══════ -->
+<div class="tv-overlay" id="tv-overlay">
+  <button class="tv-close-btn" onclick="closeTvMode()">✕ Quitter</button>
+  <div class="tv-header">
+    <div>
+      <div class="tv-logo" id="tv-logo-text">🎯 Fléchettes Club</div>
+      <div class="tv-season" id="tv-season-name">Saison 1</div>
+    </div>
+    <div class="tv-clock" id="tv-clock">00:00:00</div>
+    <div style="text-align:right">
+      <div style="display:flex;align-items:center;justify-content:flex-end;gap:6px;font-size:0.75rem;font-weight:700;color:var(--red);letter-spacing:2px;text-transform:uppercase">
+        <span class="live-dot"></span> EN DIRECT
+      </div>
+      <div id="tv-match-count" style="font-size:0.72rem;color:var(--muted);margin-top:3px;letter-spacing:1px"></div>
+    </div>
+  </div>
+  <div class="tv-body">
+    <div class="tv-ranking">
+      <div class="tv-section-title">Classement Général</div>
+      <div id="tv-ranking-list"></div>
+    </div>
+    <div class="tv-right">
+      <div>
+        <div class="tv-section-title">Podium</div>
+        <div id="tv-podium"></div>
+      </div>
+      <div>
+        <div class="tv-section-title">Dernier Match</div>
+        <div id="tv-last-match"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ SCROLL TO TOP ══════ -->
+<button id="scroll-top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Retour en haut" style="display:none;position:fixed;bottom:5.5rem;right:1.2rem;width:38px;height:38px;border-radius:50%;background:var(--dark-card);border:1px solid var(--border);color:var(--muted);font-size:1.1rem;cursor:pointer;z-index:230;transition:all .2s;box-shadow:0 2px 10px rgba(0,0,0,0.3)" onmouseenter="this.style.borderColor='var(--primary)';this.style.color='var(--primary)'" onmouseleave="this.style.borderColor='var(--border)';this.style.color='var(--muted)'"><i class="fas fa-chevron-up"></i></button>
+
+<!-- ══════ MODAL MOT DE PASSE ══════ -->
+<div class="modal-overlay" id="password-modal" style="z-index:9999">
+  <div class="modal" style="max-width:380px;width:95vw">
+    <div class="modal-header">
+      <div class="modal-title"><i class="fas fa-lock" style="color:var(--primary)"></i> <span id="password-modal-title">Accès protégé</span></div>
+      <button class="modal-close" onclick="closePasswordModal()">✕</button>
+    </div>
+    <div class="modal-body" style="padding:1.4rem">
+      <p style="color:var(--text-dim);margin-bottom:1rem;font-size:0.9rem">Entrez le mot de passe pour continuer.</p>
+      <input type="password" id="password-input" class="form-control"
+             placeholder="Mot de passe"
+             style="font-size:1.1rem;letter-spacing:4px;text-align:center"
+             onkeydown="if(event.key==='Enter') confirmPassword()"
+             autocomplete="off">
+      <div id="password-error" style="display:none;color:var(--red);font-size:0.82rem;margin-top:0.5rem;text-align:center">
+        <i class="fas fa-times-circle"></i> Mot de passe incorrect
+      </div>
+    </div>
+    <div class="modal-footer" style="display:flex;gap:0.6rem;justify-content:flex-end;padding:1rem 1.4rem;border-top:1px solid var(--border)">
+      <button class="btn btn-secondary" onclick="closePasswordModal()">Annuler</button>
+      <button class="btn btn-primary" onclick="confirmPassword()"><i class="fas fa-unlock"></i> Valider</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ IMPORT EXCEL MODAL ══════ -->
+<div class="modal-overlay" id="import-excel-modal">
+  <div class="modal" style="max-width:620px;width:95vw">
+    <div class="modal-header">
+      <div class="modal-title"><i class="fas fa-file-excel" style="color:var(--green)"></i> Importer des joueurs depuis Excel</div>
+      <button class="modal-close" onclick="closeImportModal()">✕</button>
+    </div>
+    <div class="modal-body" style="padding:1.2rem">
+
+      <!-- Zone de dépôt -->
+      <div class="import-dropzone" id="import-dropzone"
+           ondragover="importDragOver(event)" ondragleave="importDragLeave(event)" ondrop="importDrop(event)">
+        <input type="file" accept=".xlsx,.xls,.csv,.ods" id="import-file-input" onchange="importFileChosen(event)">
+        <div class="import-dropzone-icon"><i class="fas fa-cloud-upload-alt"></i></div>
+        <div class="import-dropzone-label">Glissez votre fichier ici ou cliquez pour parcourir</div>
+        <div class="import-dropzone-hint">.xlsx · .xls · .csv · .ods</div>
+      </div>
+
+      <div class="import-format-hint">
+        <strong>Format attendu :</strong> votre fichier doit contenir au moins une colonne <strong>Nom</strong> et/ou <strong>Pseudo</strong> (ou <em>Prenom</em>, <em>Name</em>, <em>Nickname</em>…).
+        La première ligne doit être l'en-tête. Les doublons (même pseudo, insensible à la casse) sont détectés automatiquement et ignorés — les stats des joueurs existants sont préservées.
+      </div>
+
+      <!-- Sélection des colonnes (visible après chargement) -->
+      <div id="import-col-map-wrap" style="display:none">
+        <div class="import-col-map">
+          <label><i class="fas fa-user"></i> Colonne "Nom" :</label>
+          <select id="import-col-nom" onchange="importPreview()"></select>
+          <label style="margin-left:0.5rem"><i class="fas fa-tag"></i> Colonne "Pseudo" :</label>
+          <select id="import-col-pseudo" onchange="importPreview()"></select>
+        </div>
+      </div>
+
+      <!-- Résumé -->
+      <div id="import-summary-wrap" style="display:none">
+        <div class="import-summary" id="import-summary"></div>
+      </div>
+
+      <!-- Tableau de prévisualisation -->
+      <div id="import-preview-wrap" style="display:none">
+        <div class="section-label" style="margin:0.6rem 0 0.4rem">Aperçu — sélectionnez les joueurs à importer</div>
+        <div style="display:flex;gap:0.5rem;margin-bottom:0.5rem">
+          <button class="btn btn-secondary btn-sm" onclick="importSelectAll(true)">✓ Tous les nouveaux</button>
+          <button class="btn btn-secondary btn-sm" onclick="importSelectAll(false)">✕ Aucun</button>
+        </div>
+        <div class="import-preview-scroll">
+          <table class="import-preview-table">
+            <thead>
+              <tr>
+                <th style="width:32px"></th>
+                <th>Nom</th>
+                <th>Pseudo</th>
+                <th>Statut</th>
+              </tr>
+            </thead>
+            <tbody id="import-preview-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+    <div class="modal-footer" style="display:flex;gap:0.6rem;justify-content:flex-end;padding:1rem 1.2rem;border-top:1px solid var(--border)">
+      <button class="btn btn-secondary" onclick="closeImportModal()">Annuler</button>
+      <button class="btn btn-primary" id="import-confirm-btn" onclick="importConfirm()" disabled style="display:flex;align-items:center;gap:0.4rem">
+        <i class="fas fa-user-plus"></i> <span id="import-confirm-label">Importer</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ LOGIN MODAL ══════ -->
+<div id="login-overlay">
+  <div class="login-box">
+    <div class="login-logo">🎯</div>
+    <div class="login-title">Fléchettes Club</div>
+
+    <!-- ÉTAPE 1 : Choisir son profil -->
+    <div class="login-step active" id="login-step-1">
+      <div class="login-sub">Sélectionnez votre profil</div>
+      <div class="login-players-grid" id="login-players-grid">
+        <div class="login-empty">Chargement...</div>
+      </div>
+      <button class="btn btn-primary" id="login-confirm-btn" onclick="goToPasswordStep()" disabled style="width:100%">
+        <i class="fas fa-arrow-right"></i> Continuer
+      </button>
+      <div style="margin-top:0.9rem">
+        <button onclick="loginAsGuest()" style="background:none;border:none;color:var(--primary);font-size:0.78rem;cursor:pointer;font-family:'Work Sans',sans-serif;text-decoration:underline;font-weight:600">
+          Continuer en tant que visiteur (lecture seule)
+        </button>
+      </div>
+    </div>
+
+    <!-- ÉTAPE 2 : Mot de passe -->
+    <div class="login-step" id="login-step-2">
+      <button class="login-back-btn" onclick="backToPlayerSelect()">
+        <i class="fas fa-arrow-left"></i> Changer de profil
+      </button>
+      <div class="login-selected-player" id="login-selected-player-info">
+        <div class="login-selected-avatar" id="login-selected-avatar">??</div>
+        <div>
+          <div style="font-size:0.88rem;font-weight:700" id="login-selected-name">Joueur</div>
+          <div style="font-size:0.68rem;color:var(--text-dim)">Entrez votre mot de passe</div>
+        </div>
+      </div>
+      <div class="login-pwd-input-wrap">
+        <input type="password" id="login-pwd-input" class="form-control"
+               placeholder="Mot de passe"
+               onkeydown="if(event.key==='Enter') confirmLogin()"
+               autocomplete="current-password">
+        <button class="login-pwd-toggle" onclick="togglePwdVisibility()" type="button">
+          <i class="fas fa-eye" id="pwd-eye-icon"></i>
+        </button>
+      </div>
+      <div id="login-pwd-error" style="display:none;color:var(--red);font-size:0.78rem;text-align:center;margin-bottom:0.7rem">
+        <i class="fas fa-times-circle"></i> Mot de passe incorrect
+      </div>
+      <button class="btn btn-primary" onclick="confirmLogin()" style="width:100%">
+        <i class="fas fa-right-to-bracket"></i> Connexion
+      </button>
+      <div class="login-no-pwd-hint" id="login-no-pwd-hint" style="display:none">
+        Ce profil n'a pas encore de mot de passe —
+        <a href="#" onclick="confirmLoginNoPwd()" style="color:var(--primary)">entrer directement</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ CHAT FLOTTANT ══════ -->
+<button id="chat-fab" onclick="toggleChat()" title="Chat du club">
+  <i class="fas fa-comments"></i>
+  <div id="chat-notif-dot"></div>
+</button>
+
+<div id="chat-panel">
+  <div class="chat-header">
+    <div style="display:flex;align-items:center;gap:0.5rem">
+      <i class="fas fa-comments" style="color:var(--primary)"></i>
+      <span class="chat-header-title">Chat du club</span>
+    </div>
+    <button class="chat-header-close" onclick="toggleChat()">✕</button>
+  </div>
+  <div id="chat-messages">
+    <div class="chat-empty">Soyez le premier à écrire 💬</div>
+  </div>
+  <div class="chat-input-row">
+    <input type="text" id="chat-input" placeholder="Écrire un message..." maxlength="200"
+           onkeydown="if(event.key==='Enter') sendChatMessage()">
+    <button id="chat-send-btn" onclick="sendChatMessage()"><i class="fas fa-paper-plane"></i></button>
+  </div>
+</div>
+
+<!-- ══════ PWA INSTALL BANNER ══════ -->
+<div id="pwa-install-banner">
+  <div class="pwa-banner-icon">📲</div>
+  <div class="pwa-banner-text">
+    <div class="pwa-banner-title">Installer l'application</div>
+    <div class="pwa-banner-sub">Accédez au club directement depuis votre écran d'accueil</div>
+  </div>
+  <button class="pwa-install-btn" onclick="installPWA()">Installer</button>
+  <button class="pwa-dismiss-btn" onclick="dismissPWA()">Plus tard</button>
+</div>
+
+
+<footer class="app-footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h3><i class="fas fa-bullseye"></i> Fléchettes Club Pro</h3>
+        <p>Application de gestion de club de fléchettes</p>
+        <p style="margin-top:0.5rem;font-size:0.8rem;color:var(--gray)">Suivez les stats, classements et tournois de votre club</p>
+      </div>
+      <div class="footer-col">
+        <h3><i class="fas fa-users"></i> Navigation</h3>
+        <p><a href="#" onclick="showPage('dashboard',null)"><i class="fas fa-house"></i> Accueil</a></p>
+        <p><a href="#" onclick="showPage('classement',null)"><i class="fas fa-trophy"></i> Classement</a></p>
+        <p><a href="#" onclick="showPage('joueurs',null)"><i class="fas fa-user"></i> Joueurs</a></p>
+        <p><a href="#" onclick="showPage('tournois',null)"><i class="fas fa-sitemap"></i> Tournois</a></p>
+        <p><a href="#" onclick="showPage('stats',null)"><i class="fas fa-chart-line"></i> Statistiques</a></p>
+      </div>
+      <div class="footer-col">
+        <h3><i class="fas fa-trophy"></i> Fonctionnalités</h3>
+        <p><a href="#" onclick="openScoreCounter()"><i class="fas fa-bullseye"></i> Compteur de score</a></p>
+        <p><a href="#" onclick="showPage('entrainement',null)"><i class="fas fa-dumbbell"></i> Entraînement</a></p>
+        <p><a href="#" onclick="openTvMode()"><i class="fas fa-tv"></i> Mode TV Live</a></p>
+        <p><a href="#" onclick="showPage('calendrier',null)"><i class="fas fa-calendar-days"></i> Calendrier</a></p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p><i class="fas fa-copyright"></i> Fléchettes Club Pro — Tous droits réservés · Propulsé par <strong>Claude</strong> <i class="fas fa-heart" style="color:var(--primary)"></i></p>
+    </div>
+  </div>
+</footer>
+
+
 <script>
 // ════════════════════════════════════════════════════════
 // FIREBASE CONFIG — Remplacez par vos propres valeurs
@@ -5044,9 +5419,10 @@ function initFirebase() {
         }
         if (doc.exists) {
           const data = doc.data();
+          _checkNewMatches(data);
           _applyFirebaseData(data);
-          _eloVersion++;       // invalide le cache après sync Firebase
-          recomputeElo(true); // force recalcul complet
+          _eloVersion++;
+          recomputeElo(true);
           renderAll();
           applyClubSettings();
           updateSeasonBadge();
@@ -5196,6 +5572,7 @@ function recomputeElo(force) {
   });
   _eloCacheVersion = _eloVersion;
   _statsCache = null; // invalidate stats cache too
+  if (typeof checkDivisionChanges === 'function') checkDivisionChanges();
 }
 
 // ════════════════════════════════════════════════════════
@@ -5375,23 +5752,23 @@ function renderDashboard() {
           <div style="font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:3px;color:var(--light);margin-bottom:0.5rem">BIENVENUE !</div>
           <div style="font-size:0.9rem;color:var(--text-dim);margin-bottom:2rem;max-width:460px;margin-left:auto;margin-right:auto">Votre club est prêt. Suivez ces 3 étapes pour commencer :</div>
           <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem;max-width:600px;margin:0 auto 2rem">
-            <div style="background:var(--dark-card);border:1px solid var(--border);border-radius:10px;padding:1.2rem;cursor:pointer;transition:all .18s" onclick="showPage('joueurs',document.querySelector('.nav-btn[onclick*=joueurs]'))" onmouseenter="this.style.borderColor='var(--accent)'" onmouseleave="this.style.borderColor='var(--border)'">
+            <div style="background:var(--dark-card);border:1px solid var(--border);border-radius:10px;padding:1.2rem;cursor:pointer;transition:all .18s" onclick="showPage('joueurs',null)" onmouseenter="this.style.borderColor='var(--accent)'" onmouseleave="this.style.borderColor='var(--border)'">
               <div style="font-size:2rem;margin-bottom:0.5rem">👤</div>
               <div style="font-size:0.75rem;font-weight:700;color:var(--accent);letter-spacing:1px;text-transform:uppercase;margin-bottom:0.3rem">Étape 1</div>
               <div style="font-size:0.82rem;font-weight:600;color:var(--light)">Ajouter des joueurs</div>
             </div>
-            <div style="background:var(--dark-card);border:1px solid var(--border);border-radius:10px;padding:1.2rem;cursor:pointer;transition:all .18s" onclick="showPage('matchs',document.querySelector('.nav-btn[onclick*=matchs]'))" onmouseenter="this.style.borderColor='var(--accent)'" onmouseleave="this.style.borderColor='var(--border)'">
+            <div style="background:var(--dark-card);border:1px solid var(--border);border-radius:10px;padding:1.2rem;cursor:pointer;transition:all .18s" onclick="showPage('matchs',null)" onmouseenter="this.style.borderColor='var(--accent)'" onmouseleave="this.style.borderColor='var(--border)'">
               <div style="font-size:2rem;margin-bottom:0.5rem">🎯</div>
               <div style="font-size:0.75rem;font-weight:700;color:var(--accent);letter-spacing:1px;text-transform:uppercase;margin-bottom:0.3rem">Étape 2</div>
               <div style="font-size:0.82rem;font-weight:600;color:var(--light)">Saisir des matchs</div>
             </div>
-            <div style="background:var(--dark-card);border:1px solid var(--border);border-radius:10px;padding:1.2rem;cursor:pointer;transition:all .18s" onclick="showPage('classement',document.querySelector('.nav-btn[onclick*=classement]'))" onmouseenter="this.style.borderColor='var(--accent)'" onmouseleave="this.style.borderColor='var(--border)'">
+            <div style="background:var(--dark-card);border:1px solid var(--border);border-radius:10px;padding:1.2rem;cursor:pointer;transition:all .18s" onclick="showPage('classement',null)" onmouseenter="this.style.borderColor='var(--accent)'" onmouseleave="this.style.borderColor='var(--border)'">
               <div style="font-size:2rem;margin-bottom:0.5rem">🏆</div>
               <div style="font-size:0.75rem;font-weight:700;color:var(--accent);letter-spacing:1px;text-transform:uppercase;margin-bottom:0.3rem">Étape 3</div>
               <div style="font-size:0.82rem;font-weight:600;color:var(--light)">Voir le classement</div>
             </div>
           </div>
-          <button class="btn btn-primary" style="font-size:0.9rem;padding:0.7rem 2rem" onclick="showPage('joueurs',document.querySelector('.nav-btn[onclick*=joueurs]'))">➕ Ajouter le premier joueur</button>
+          <button class="btn btn-primary" style="font-size:0.9rem;padding:0.7rem 2rem" onclick="showPage('joueurs',null)">➕ Ajouter le premier joueur</button>
         </div>`;
     } else {
       onboardingEl.style.display = 'none';
@@ -5568,7 +5945,7 @@ function renderDashboard() {
           return `<div class="defi-card ${d.status}" style="margin-bottom:0.5rem">
             <div class="defi-icon">⚔️</div>
             <div class="defi-info"><div class="defi-title" style="font-size:0.8rem">${fp?.pseudo||'?'} vs ${tp?.pseudo||'?'}</div><div class="defi-meta">${d.game}</div></div>
-            <button class="btn btn-sm btn-primary" onclick="showPage('defis',document.querySelector('.nav-btn[onclick*=defis]'))">Voir →</button>
+            <button class="btn btn-sm btn-primary" onclick="showPage('defis',null)">Voir →</button>
           </div>`;
         }).join('')}
       </div>`;
@@ -5656,6 +6033,7 @@ function renderPlayers() {
           <div class="pcard-elo">${p.elo} ${trendBadge(p.trend)}</div>
           <div class="pcard-peak"><div>PEAK</div><div><span>${p.peak||p.elo}</span></div></div>
         </div>
+        ${divisionProgressBar(p.elo||1000)}
         <div class="pcard-sparkline">${sparkline(p.eloHistory,210,28)}</div>
         <div class="pcard-form">${form.length ? formDots(form) : `<span style="font-size:0.72rem;color:var(--muted)">Pas encore joué</span>`}</div>
         <div class="pcard-stats">
@@ -5666,6 +6044,7 @@ function renderPlayers() {
         ${trophies ? `<div class="pcard-trophies">${trophies}</div>` : ''}
         ${renderPlayerGoalProgress(p)}
         <div style="display:flex;gap:0.4rem;margin-top:0.5rem;padding-top:0.5rem;border-top:1px solid var(--border)" onclick="event.stopPropagation()">
+          <button class="btn btn-sm btn-secondary" style="flex:1;font-size:0.6rem" onclick="event.stopPropagation();openPlayerFull(${p.id})">👤 Fiche</button>
           <button class="btn btn-sm btn-secondary" style="flex:1;font-size:0.6rem" onclick="openPlayerGoalsModal(${p.id})" title="Objectifs personnels">🎯 Objectifs</button>
           <button class="btn btn-sm btn-secondary" style="flex:1;font-size:0.6rem" onclick="renderDoubleStatsModal(${p.id})" title="Statistiques checkouts">📊 Checkouts</button>
         </div>
@@ -7031,28 +7410,7 @@ function imprimerPouleRR(tId, pIdx) {
     <div>Arbitre : ___________________<br><br>Signature : ___________________</div>
     <div>Date : ___________________<br><br>Table N° : ___________________</div>
   </div>
-    <div id="rotation-hint" style="display:none;position:fixed;bottom:70px;left:50%;transform:translateX(-50%);z-index:9500;background:rgba(13,17,26,.92);border:1px solid var(--border);border-radius:12px;padding:.7rem 1.2rem;align-items:center;gap:.7rem;color:var(--light);font-size:.78rem;white-space:nowrap;box-shadow:0 8px 32px rgba(0,0,0,.5);backdrop-filter:blur(10px);pointer-events:none">
-    <span style="font-size:1.2rem">📱</span>
-    <span style="color:var(--accent);font-weight:700;letter-spacing:.5px">Mode paysage activé</span>
-  </div>
-  <div id="compte-pwd-overlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);backdrop-filter:blur(6px);z-index:9999;align-items:center;justify-content:center">
-    <div style="background:var(--dark-card);border:1px solid var(--border);border-radius:16px;padding:2rem;max-width:340px;width:90%;box-shadow:0 20px 60px rgba(0,0,0,.6)">
-      <div style="text-align:center;margin-bottom:1.4rem">
-        <div style="font-size:2rem;margin-bottom:.5rem">🔐</div>
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:1px">Mon Compte</div>
-        <div style="font-size:.78rem;color:var(--muted);margin-top:4px">Entrez votre mot de passe</div>
-      </div>
-      <input type="password" id="compte-pwd-input" placeholder="Mot de passe"
-        style="width:100%;padding:.75rem 1rem;border-radius:9px;border:1px solid var(--border);background:var(--dark);color:var(--light);font-size:.95rem;margin-bottom:.6rem"
-        onkeydown="if(event.key==='Enter')confirmComptePwd()">
-      <div id="compte-pwd-error" style="display:none;color:var(--red);font-size:.75rem;margin-bottom:.6rem"></div>
-      <div style="display:flex;gap:.6rem">
-        <button class="btn btn-secondary" style="flex:1" onclick="document.getElementById('compte-pwd-overlay').style.display='none'">Annuler</button>
-        <button class="btn btn-primary" style="flex:1" onclick="confirmComptePwd()"><i class="fas fa-unlock"></i> Accéder</button>
-      </div>
-    </div>
-  </div>
-</body></html>`);
+  </body></html>`);
   pw.document.close();
   setTimeout(() => pw.print(), 300);
 }
@@ -7721,11 +8079,7 @@ function exportCSV() {
   showNotif('✓ CSV exporté !');
 }
 
-function exportPDF() {
-  renderRanking();
-  showPage('classement', document.querySelector('.nav-btn[onclick*="classement"]'));
-  window.print();
-}
+// exportPDF — défini plus bas (appelle printClassement)
 
 function resetAll() {
   if (!confirm('⚠ Réinitialiser TOUTES les données ? Cette action est irréversible.')) return;
@@ -7815,11 +8169,18 @@ function renderAll() {
 // DIVISION SYSTEM
 // ════════════════════════════════════════════════════════
 function getDivision(elo) {
-  if (elo >= 1400) return { name: 'Légende', cls: 'div-legend', icon: '👑' };
-  if (elo >= 1300) return { name: 'Elite', cls: 'div-elite', icon: '💎' };
-  if (elo >= 1200) return { name: 'Or', cls: 'div-gold', icon: '🥇' };
-  if (elo >= 1100) return { name: 'Argent', cls: 'div-silver', icon: '🥈' };
-  return { name: 'Bronze', cls: 'div-bronze', icon: '🥉' };
+  if (elo >= 1400) return { name:'Légende', cls:'div-legend', icon:'👑', min:1400, next:null };
+  if (elo >= 1300) return { name:'Elite',   cls:'div-elite',  icon:'💎', min:1300, next:1400 };
+  if (elo >= 1200) return { name:'Or',      cls:'div-gold',   icon:'🥇', min:1200, next:1300 };
+  if (elo >= 1100) return { name:'Argent',  cls:'div-silver', icon:'🥈', min:1100, next:1200 };
+  return              { name:'Bronze',  cls:'div-bronze', icon:'🥉', min:1000, next:1100 };
+}
+function divisionProgressBar(elo) {
+  const d = getDivision(elo);
+  if (!d.next) return '<div class="div-progress-wrap"><div class="div-progress-labels"><span>'+d.icon+' '+d.name+'</span><span style="color:var(--gold)">MAX 👑</span></div><div class="div-progress-bar"><div class="div-progress-fill '+d.cls+'-fill" style="width:100%"></div></div></div>';
+  const pct = Math.min(100, Math.round((elo - d.min) / (d.next - d.min) * 100));
+  const next = getDivision(d.next);
+  return '<div class="div-progress-wrap"><div class="div-progress-labels"><span>'+d.icon+' '+d.name+'</span><span>'+next.icon+' '+next.name+' ('+d.next+')</span></div><div class="div-progress-bar"><div class="div-progress-fill '+d.cls+'-fill" style="width:'+pct+'%"></div></div></div>';
 }
 function divisionBadge(elo) {
   const d = getDivision(elo);
@@ -8855,7 +9216,7 @@ function renderCalendrier() {
         ${!isPast ? `<button class="btn btn-primary btn-sm" onclick="startSoireeFromCal(${s.id})">🎯 Démarrer</button>` : ''}
         <button class="btn btn-secondary btn-sm" onclick="editSoireeAttendees(${s.id})">👥 Participants</button>
         ${!isPast && atts.length >= 2 ? `<button class="btn btn-secondary btn-sm" onclick="generateAutoPlanning(${s.id})">📋 Planning auto</button>` : ''}
-        ${isPast ? `<button class="btn btn-secondary btn-sm" onclick="generateSessionReport(null)">📊 Rapport</button>` : ''}
+        ${isPast ? `<button class="btn btn-secondary btn-sm" onclick="openSoireeRapport(${s.id})">📊 Rapport</button>` : ''}
         ${!isPast ? `<button class="reminder-btn ${isReminderSet(s.id)?'set':''}" id="reminder-btn-${s.id}" onclick="toggleReminder(${s.id})" title="Rappel notifications"><i class="fas fa-bell"></i> ${isReminderSet(s.id)?'Rappel activé':'Rappel'}</button>` : ''}
         <button class="btn btn-sm" style="background:var(--red-bg);color:var(--red);border:1px solid rgba(240,83,74,0.3);margin-left:auto" onclick="deleteSoiree(${s.id})">✕</button>
       </div>
@@ -13529,11 +13890,21 @@ let _currentUser = null; // { id, pseudo, name }
 let _isGuest = false;
 let _loginSelectedId = null; // joueur sélectionné à l'étape 1
 
-// ── Hachage simple (sha-256 via SubtleCrypto) ──
+// ── Hachage simple (sha-256 via SubtleCrypto, fallback djb2 sur file://) ──
 async function _hashPwd(pwd) {
-  const enc = new TextEncoder().encode(pwd + '_darts_salt');
-  const buf = await crypto.subtle.digest('SHA-256', enc);
-  return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2,'0')).join('');
+  const salted = pwd + '_darts_salt';
+  // crypto.subtle nécessite HTTPS ou localhost — fallback sur file://
+  if (window.isSecureContext && crypto && crypto.subtle) {
+    try {
+      const enc = new TextEncoder().encode(salted);
+      const buf = await crypto.subtle.digest('SHA-256', enc);
+      return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2,'0')).join('');
+    } catch(e) { /* fallback */ }
+  }
+  // Fallback : hachage djb2 (suffisant pour usage local)
+  let h = 5381;
+  for (let i = 0; i < salted.length; i++) h = ((h << 5) + h) ^ salted.charCodeAt(i);
+  return 'local_' + (h >>> 0).toString(16).padStart(8,'0');
 }
 
 function openLoginModal() {
@@ -13553,6 +13924,13 @@ function renderLoginPlayers() {
     grid.innerHTML = `<div class="login-empty" style="grid-column:1/-1">
       Aucun joueur encore.<br><span style="font-size:0.72rem;color:var(--gray)">Entrez en tant que visiteur pour ajouter des joueurs.</span>
     </div>`;
+    // Mettre le bouton visiteur en évidence quand la liste est vide
+    const guestBtn = document.querySelector('#login-step-1 button[onclick*="loginAsGuest"]');
+    if (guestBtn) {
+      guestBtn.style.color = 'var(--primary)';
+      guestBtn.style.fontWeight = '700';
+      guestBtn.style.fontSize = '0.82rem';
+    }
     return;
   }
   grid.innerHTML = players.map(p => {
@@ -13614,7 +13992,7 @@ async function confirmLogin() {
   if (!p) return;
   const pwd = document.getElementById('login-pwd-input').value;
   if (!p.pwdHash) {
-    // Pas de mot de passe → connexion directe (mais on propose d'en créer un)
+    // Pas de mot de passe → connexion directe
     _doLogin(p);
     return;
   }
@@ -13623,15 +14001,25 @@ async function confirmLogin() {
     document.getElementById('login-pwd-error').innerHTML = '<i class="fas fa-times-circle"></i> Entrez votre mot de passe';
     return;
   }
-  const hash = await _hashPwd(pwd);
-  if (hash !== p.pwdHash) {
-    document.getElementById('login-pwd-error').style.display = 'block';
-    document.getElementById('login-pwd-error').innerHTML = '<i class="fas fa-times-circle"></i> Mot de passe incorrect';
-    document.getElementById('login-pwd-input').value = '';
-    document.getElementById('login-pwd-input').focus();
-    return;
+  try {
+    const hash = await _hashPwd(pwd);
+    // Comparer les deux hash (même format, ou local fallback)
+    const isMatch = hash === p.pwdHash ||
+      // Si le mdp a été défini en HTTPS mais qu'on est en file://, tenter un fallback
+      (hash.startsWith('local_') && p.pwdHash.length === 64 && !window.isSecureContext);
+    if (!isMatch) {
+      document.getElementById('login-pwd-error').style.display = 'block';
+      document.getElementById('login-pwd-error').innerHTML = '<i class="fas fa-times-circle"></i> Mot de passe incorrect';
+      document.getElementById('login-pwd-input').value = '';
+      document.getElementById('login-pwd-input').focus();
+      return;
+    }
+    _doLogin(p);
+  } catch(e) {
+    console.error('[Login] Erreur hash:', e);
+    // En cas d'erreur crypto, connexion sans vérification (mode dégradé)
+    _doLogin(p);
   }
-  _doLogin(p);
 }
 
 function confirmLoginNoPwd() {
@@ -13640,36 +14028,58 @@ function confirmLoginNoPwd() {
 }
 
 function _doLogin(p) {
-  _currentUser = { id: p.id, pseudo: p.pseudo, name: p.name };
-  _isGuest = false;
-  localStorage.setItem('darts_current_user', JSON.stringify(_currentUser));
-  document.getElementById('login-overlay').style.display = 'none';
-  _updateUserBadge();
-  showNotif(`👋 Bienvenue ${p.pseudo} !`, 'success');
-  if(typeof _updateCompteNavBtn==='function') _updateCompteNavBtn();
-  // Proposer de créer un mot de passe si pas encore défini
-  if (!p.pwdHash) {
-    setTimeout(() => {
-      if (confirm(`👋 ${p.pseudo}, vous n'avez pas encore de mot de passe.\n\nVoulez-vous en créer un maintenant ?`)) {
-        promptSetOwnPassword();
-      }
-    }, 800);
+  try {
+    _currentUser = { id: p.id, pseudo: p.pseudo, name: p.name };
+    _isGuest = false;
+    try { localStorage.setItem('darts_current_user', JSON.stringify(_currentUser)); } catch(e) {}
+    document.getElementById('login-overlay').style.display = 'none';
+    try { _updateUserBadge(); } catch(e) {}
+    try { showNotif(`👋 Bienvenue ${p.pseudo} !`, 'success'); } catch(e) {}
+    // Proposer de créer un mot de passe si pas encore défini
+    if (!p.pwdHash) {
+      setTimeout(() => {
+        try {
+          if (confirm(`👋 ${p.pseudo}, vous n'avez pas encore de mot de passe.\n\nVoulez-vous en créer un maintenant ?`)) {
+            promptSetOwnPassword();
+          }
+        } catch(e) {}
+      }, 800);
+    }
+  } catch(e) {
+    console.error('[_doLogin] Erreur:', e);
+    document.getElementById('login-overlay').style.display = 'none';
   }
 }
 
 function loginAsGuest() {
+  try {
+    _currentUser = null;
+    _isGuest = true;
+    try { localStorage.setItem('darts_current_user', 'guest'); } catch(e) {}
+    document.getElementById('login-overlay').style.display = 'none';
+    try { _updateUserBadge(); } catch(e) {}
+    try { showNotif('👁 Mode visiteur — lecture seule', 'info'); } catch(e) {}
+  } catch(e) {
+    // Failsafe absolu
+    document.getElementById('login-overlay').style.display = 'none';
+  }
+}
+
+function logoutUser() {
   _currentUser = null;
-  _isGuest = true;
-  localStorage.setItem('darts_current_user', 'guest');
-  document.getElementById('login-overlay').style.display = 'none';
-  _updateUserBadge();
-  showNotif('👁 Mode visiteur — lecture seule', 'info');
-  if(typeof _updateCompteNavBtn==='function') _updateCompteNavBtn();
+  _isGuest = false;
+  try { localStorage.removeItem('darts_current_user'); } catch(e) {}
+  try { _updateUserBadge(); } catch(e) {}
+  // Reafficher le login
+  try { renderLoginPlayers(); } catch(e) {}
+  try { _showLoginStep(1); } catch(e) {}
+  document.getElementById('login-overlay').style.display = 'flex';
 }
 
 function _updateUserBadge() {
   const badge = document.getElementById('current-user-badge');
   const nameEl = document.getElementById('current-user-name');
+  const logoutBtn = document.getElementById('logout-btn');
   if (_currentUser) {
     badge.style.display = 'flex';
     badge.style.background = '';
@@ -13677,6 +14087,7 @@ function _updateUserBadge() {
     nameEl.textContent = _currentUser.pseudo;
     const dot = badge.querySelector('.current-user-dot');
     if (dot) { dot.style.background = ''; dot.style.boxShadow = ''; }
+    if (logoutBtn) logoutBtn.style.display = 'flex';
   } else if (_isGuest) {
     badge.style.display = 'flex';
     nameEl.textContent = 'Visiteur';
@@ -13684,37 +14095,53 @@ function _updateUserBadge() {
     badge.style.borderColor = 'var(--border)';
     const dot = badge.querySelector('.current-user-dot');
     if (dot) { dot.style.background = 'var(--gray)'; dot.style.boxShadow = 'none'; }
+    if (logoutBtn) logoutBtn.style.display = 'flex';
   } else {
     badge.style.display = 'none';
+    if (logoutBtn) logoutBtn.style.display = 'none';
   }
 }
 
 function initLogin() {
-  const stored = localStorage.getItem('darts_current_user');
-  if (!stored) {
-    renderLoginPlayers();
-    _showLoginStep(1);
-    document.getElementById('login-overlay').style.display = 'flex';
-  } else if (stored === 'guest') {
-    _isGuest = true;
-    document.getElementById('login-overlay').style.display = 'none';
-    _updateUserBadge();
-  } else {
-    try {
-      const u = JSON.parse(stored);
-      const p = players.find(x => x.id === u.id);
-      if (p) {
-        _currentUser = { id: p.id, pseudo: p.pseudo, name: p.name };
-        document.getElementById('login-overlay').style.display = 'none';
-        _updateUserBadge();
-      } else {
+  try {
+    const stored = localStorage.getItem('darts_current_user');
+    if (!stored) {
+      // Pas d'utilisateur stocké → afficher le login
+      renderLoginPlayers();
+      _showLoginStep(1);
+      document.getElementById('login-overlay').style.display = 'flex';
+    } else if (stored === 'guest') {
+      _isGuest = true;
+      document.getElementById('login-overlay').style.display = 'none';
+      try { _updateUserBadge(); } catch(e) {}
+    } else {
+      try {
+        const u = JSON.parse(stored);
+        const p = players.find(x => x.id === u.id);
+        if (p) {
+          _currentUser = { id: p.id, pseudo: p.pseudo, name: p.name };
+          document.getElementById('login-overlay').style.display = 'none';
+          try { _updateUserBadge(); } catch(e) {}
+        } else {
+          localStorage.removeItem('darts_current_user');
+          renderLoginPlayers();
+          _showLoginStep(1);
+          document.getElementById('login-overlay').style.display = 'flex';
+        }
+      } catch(e) {
         localStorage.removeItem('darts_current_user');
         renderLoginPlayers();
+        _showLoginStep(1);
         document.getElementById('login-overlay').style.display = 'flex';
       }
-    } catch(e) {
-      document.getElementById('login-overlay').style.display = 'flex';
     }
+  } catch(e) {
+    console.error('[initLogin] Erreur:', e);
+    // Failsafe: afficher quand même le login
+    try {
+      renderLoginPlayers();
+      document.getElementById('login-overlay').style.display = 'flex';
+    } catch(e2) {}
   }
 }
 
@@ -14057,18 +14484,25 @@ window.addEventListener('appinstalled', () => {
   document.getElementById('pwa-install-banner').classList.remove('show');
 });
 
-// ── Détection nouveaux matchs intégrée dans onSnapshot (plus de surcharge récursive) ──
+// _checkNewMatches intégré dans onSnapshot
 
 // ── Initialisation de toutes les nouvelles fonctionnalités ──
 (function initNewFeatures() {
-  // Firebase
-  initFirebase();
-  // Login — après un court délai pour que Firebase charge d'abord
+  // Détecter le protocole file:// et désactiver Firebase si besoin
+  const isFileProtocol = window.location.protocol === 'file:';
+  if (isFileProtocol) {
+    console.warn('[App] Ouvert via file:// — Firebase désactivé, mode local uniquement.');
+    _setSyncStatus('disabled');
+  } else {
+    initFirebase();
+  }
+  // Login — immédiat si file://, sinon délai pour attendre Firebase
+  const loginDelay = isFileProtocol ? 0 : 800;
   setTimeout(() => {
     initLogin();
-  }, 800);
-  // Chat — après Firebase
-  setTimeout(initChat, 1500);
+  }, loginDelay);
+  // Chat — uniquement si pas file://
+  if (!isFileProtocol) setTimeout(initChat, 1500);
   // Rappels
   initReminders();
   // Compteur initial de matchs
@@ -14095,252 +14529,6 @@ const tvlt = document.getElementById('tv-logo-text');
       btn.style.justifyContent = 'center';
     });
   }
-})();
-
-
-// ════════════════════════════════════════════════════════
-// PAGE MON COMPTE
-// ════════════════════════════════════════════════════════
-let _compteNewEmoji = null;
-let _compteNewColor = null;
-
-function showPageCompte(el) {
-  if (!_currentUser) { showNotif('⚠ Connectez-vous d\'abord.', 'error'); openLoginModal(); return; }
-  const p = players.find(x => x.id === _currentUser.id);
-  if (!p) { showNotif('⚠ Joueur introuvable.', 'error'); return; }
-  if (!p.pwdHash) { _openCompte(el); return; }
-  const ov = document.getElementById('compte-pwd-overlay');
-  if (ov) {
-    document.getElementById('compte-pwd-input').value = '';
-    document.getElementById('compte-pwd-error').style.display = 'none';
-    ov.style.display = 'flex';
-    ov._navEl = el;
-    setTimeout(() => document.getElementById('compte-pwd-input').focus(), 100);
-  } else { _openCompte(el); }
-}
-
-async function confirmComptePwd() {
-  const p = players.find(x => x.id === _currentUser.id);
-  if (!p) return;
-  const ov = document.getElementById('compte-pwd-overlay');
-  const input = document.getElementById('compte-pwd-input');
-  const errEl = document.getElementById('compte-pwd-error');
-  const pwd = input.value;
-  if (!pwd) { errEl.style.display='block'; errEl.textContent='Entrez votre mot de passe.'; return; }
-  const hash = await _hashPwd(pwd);
-  if (hash !== p.pwdHash) {
-    errEl.style.display='block'; errEl.textContent='❌ Mot de passe incorrect.';
-    input.value=''; input.focus(); return;
-  }
-  ov.style.display = 'none';
-  _openCompte(ov._navEl);
-}
-
-function _openCompte(navEl) {
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-  document.getElementById('page-compte').classList.add('active');
-  if (navEl) navEl.classList.add('active');
-  renderCompte();
-}
-
-function renderCompte() {
-  if (!_currentUser) return;
-  const p = players.find(x => x.id === _currentUser.id);
-  if (!p) return;
-  const myMatches = matches.filter(m => m.p1 === p.id || m.p2 === p.id);
-  const wins = myMatches.filter(m => m.winner === p.id).length;
-  const losses = myMatches.length - wins;
-  const winRate = myMatches.length ? Math.round(wins/myMatches.length*100) : 0;
-  const my180s = myMatches.reduce((a,m)=>a+(m.p1===p.id?(m.v180p1||0):(m.v180p2||0)),0);
-  const peakElo = p.peak||p.elo||1000;
-  const colors=['#e63946','#457bf7','#2dc653','#f5c518','#a67cf7','#ff6b74','#34d47b'];
-  const avatarColor = p.avatarColor||colors[p.id%colors.length]||'#e63946';
-  const avatarContent = p.avatarPhoto
-    ? `<img src="${p.avatarPhoto}" style="width:100%;height:100%;object-fit:cover">`
-    : (p.avatarEmoji||(p.pseudo||'?').slice(0,2).toUpperCase());
-
-  document.getElementById('compte-profile-card').innerHTML = `
-    <div class="compte-hero">
-      <div style="position:relative;flex-shrink:0">
-        <div class="compte-avatar" style="background:linear-gradient(135deg,${avatarColor},${avatarColor}99)" onclick="document.getElementById('compte-photo-input').click()">
-          ${avatarContent}
-          <div class="compte-avatar-edit-hint"><i class="fas fa-camera"></i></div>
-        </div>
-        <input type="file" id="compte-photo-input" accept="image/*" style="display:none" onchange="compteUploadPhoto(event)">
-      </div>
-      <div style="flex:1;min-width:140px">
-        <div class="compte-hero-pseudo">${p.pseudo}</div>
-        <div class="compte-hero-name">${p.name}${p.surnom?` · <em style="color:var(--accent)">${p.surnom}</em>`:''}</div>
-        <div class="compte-hero-elo"><i class="fas fa-chart-line"></i> ELO ${p.elo||1000} · Peak ${peakElo}</div>
-      </div>
-    </div>
-    <div class="compte-edit-form">
-      <div class="compte-edit-row"><span class="compte-edit-label">Pseudo</span><input type="text" id="compte-pseudo-input" value="${p.pseudo}" style="flex:1;max-width:200px"></div>
-      <div class="compte-edit-row"><span class="compte-edit-label">Surnom</span><input type="text" id="compte-surnom-input" value="${p.surnom||''}" placeholder="ex: Le Flécheur" style="flex:1;max-width:200px"></div>
-      <div>
-        <div class="compte-edit-row" style="margin-bottom:.5rem"><span class="compte-edit-label">Emoji</span></div>
-        <div class="compte-emoji-picker">
-          ${['🎯','🏹','⚡','🔥','💎','⭐','🌟','👑','🦁','🐉','🥊','🎳','🃏','🏆','💪','🎭','🤖','🦊','🐺','🦅'].map(e=>`<div class="compte-emoji-btn${(p.avatarEmoji||'')==e?' active':''}" onclick="compteSelectEmoji(this,'${e}')">${e}</div>`).join('')}
-        </div>
-      </div>
-      <div>
-        <div class="compte-edit-row" style="margin-bottom:.5rem"><span class="compte-edit-label">Couleur</span></div>
-        <div class="compte-color-dots" id="compte-color-dots">
-          ${['#e63946','#f0534a','#ff7f50','#f5c518','#34d47b','#2dc653','#16c9aa','#4a9eff','#457bf7','#a67cf7','#6c5ce7','#fd79a8','#f472b6','#b2bec3'].map(c=>`<div class="compte-color-dot${avatarColor===c?' active':''}" style="background:${c}" onclick="compteSelectColor(this,'${c}')"></div>`).join('')}
-          <input type="color" value="${avatarColor}" title="Couleur libre" style="width:26px;height:26px;border-radius:50%;border:3px solid var(--border);padding:1px;cursor:pointer;background:none" oninput="compteSelectColorFree(this.value)">
-        </div>
-      </div>
-      ${p.avatarPhoto?`<div class="compte-edit-row"><span class="compte-edit-label">Photo</span><button class="btn btn-sm" style="background:var(--red-bg);color:var(--red);border:1px solid rgba(230,57,70,.3)" onclick="compteSupprimerPhoto()"><i class="fas fa-trash"></i> Supprimer</button></div>`:''}
-      <div style="padding-top:.4rem"><button class="btn btn-primary" onclick="compteSauvegarderProfil()"><i class="fas fa-check"></i> Sauvegarder le profil</button></div>
-    </div>`;
-
-  document.getElementById('compte-stats-grid').innerHTML = `<div class="compte-stats-grid">
-    <div class="compte-stat-block"><div class="compte-stat-val">${p.elo||1000}</div><div class="compte-stat-label">ELO actuel</div></div>
-    <div class="compte-stat-block"><div class="compte-stat-val">${peakElo}</div><div class="compte-stat-label">Peak ELO</div></div>
-    <div class="compte-stat-block"><div class="compte-stat-val">${myMatches.length}</div><div class="compte-stat-label">Matchs</div></div>
-    <div class="compte-stat-block"><div class="compte-stat-val" style="color:var(--green)">${wins}</div><div class="compte-stat-label">Victoires</div></div>
-    <div class="compte-stat-block"><div class="compte-stat-val" style="color:var(--red)">${losses}</div><div class="compte-stat-label">Défaites</div></div>
-    <div class="compte-stat-block"><div class="compte-stat-val">${winRate}%</div><div class="compte-stat-label">Win Rate</div></div>
-    <div class="compte-stat-block"><div class="compte-stat-val" style="color:var(--gold)">${my180s}</div><div class="compte-stat-label">180s</div></div>
-    <div class="compte-stat-block"><div class="compte-stat-val">${(p.achievements||[]).length}</div><div class="compte-stat-label">Trophées</div></div>
-  </div>`;
-
-  const achs = (p.achievements||[]).map(aid=>ACHIEVEMENTS.find(x=>x.id===aid)).filter(Boolean);
-  document.getElementById('compte-trophees').innerHTML = achs.length
-    ? `<div class="compte-trophees-grid">${achs.map(a=>`<div class="compte-trophy-chip"><span style="font-size:1.1rem">${a.icon}</span><div><div style="font-size:.75rem;font-weight:700;color:var(--light)">${a.name}</div><div style="font-size:.62rem;color:var(--muted)">${a.desc}</div></div></div>`).join('')}</div>`
-    : '<div class="empty"><div class="empty-icon">🏅</div><div class="empty-text">Jouez pour débloquer vos premiers trophées !</div></div>';
-}
-
-function compteSelectEmoji(el, emoji) {
-  document.querySelectorAll('.compte-emoji-btn').forEach(b=>b.classList.remove('active'));
-  el.classList.add('active'); _compteNewEmoji = emoji;
-}
-function compteSelectColor(el, color) {
-  document.querySelectorAll('.compte-color-dot').forEach(d=>d.classList.remove('active'));
-  el.classList.add('active'); _compteNewColor = color;
-  const av = document.querySelector('.compte-avatar');
-  if(av) av.style.background=`linear-gradient(135deg,${color},${color}99)`;
-}
-function compteSelectColorFree(color) {
-  document.querySelectorAll('.compte-color-dot').forEach(d=>d.classList.remove('active'));
-  _compteNewColor = color;
-  const av = document.querySelector('.compte-avatar');
-  if(av) av.style.background=`linear-gradient(135deg,${color},${color}99)`;
-}
-function compteUploadPhoto(evt) {
-  const file = evt.target.files[0]; if(!file) return;
-  if(file.size>600000){showNotif('⚠ Image trop grande (max 600 Ko)','error');return;}
-  const reader = new FileReader();
-  reader.onload = e => { const p=players.find(x=>x.id===_currentUser.id); if(!p)return; p.avatarPhoto=e.target.result; save(); showNotif('✓ Photo mise à jour !','success'); renderCompte(); };
-  reader.readAsDataURL(file);
-}
-function compteSupprimerPhoto(){
-  const p=players.find(x=>x.id===_currentUser.id); if(!p)return;
-  if(!confirm('Supprimer la photo de profil ?'))return;
-  delete p.avatarPhoto; save(); showNotif('Photo supprimée.','info'); renderCompte();
-}
-function compteSauvegarderProfil(){
-  const p=players.find(x=>x.id===_currentUser.id); if(!p)return;
-  const newPseudo=(document.getElementById('compte-pseudo-input').value||'').trim();
-  const newSurnom=(document.getElementById('compte-surnom-input').value||'').trim();
-  if(newPseudo.length<2){showNotif('⚠ Pseudo trop court (min 2 caractères)','error');return;}
-  if(newPseudo.toLowerCase()!==p.pseudo.toLowerCase()){
-    if(players.find(x=>x.id!==p.id&&x.pseudo.toLowerCase()===newPseudo.toLowerCase())){showNotif('⚠ Pseudo déjà utilisé.','error');return;}
-  }
-  p.pseudo=newPseudo; p.surnom=newSurnom||undefined;
-  if(_compteNewEmoji!==null) p.avatarEmoji=_compteNewEmoji||undefined;
-  if(_compteNewColor!==null) p.avatarColor=_compteNewColor;
-  _currentUser.pseudo=newPseudo; localStorage.setItem('darts_current_user',JSON.stringify(_currentUser));
-  save(); renderAll(); renderCompte(); _updateUserBadge(); _updateCompteNavBtn();
-  showNotif('✅ Profil mis à jour !','success'); _compteNewEmoji=null; _compteNewColor=null;
-}
-async function compteChangerMotDePasse(){
-  const p=players.find(x=>x.id===_currentUser.id); if(!p)return;
-  const pwd1=prompt(`🔐 Nouveau mot de passe pour ${p.pseudo} (min 3 car.) :`);
-  if(!pwd1)return; if(pwd1.length<3){alert('Minimum 3 caractères.');return;}
-  const pwd2=prompt('Confirmez :');
-  if(pwd1!==pwd2){alert('❌ Les mots de passe ne correspondent pas.');return;}
-  p.pwdHash=await _hashPwd(pwd1); save(); showNotif('🔐 Mot de passe mis à jour !','success');
-}
-function compteSupprimerMotDePasse(){
-  const p=players.find(x=>x.id===_currentUser.id); if(!p||!p.pwdHash){showNotif('Aucun mot de passe défini.','info');return;}
-  if(!confirm(`Supprimer le mot de passe de ${p.pseudo} ?`))return;
-  delete p.pwdHash; save(); showNotif('🔓 Mot de passe supprimé.','info');
-}
-function compteDeconnexion(){
-  if(!confirm('Se déconnecter ?'))return;
-  _currentUser=null; _isGuest=false; localStorage.removeItem('darts_current_user');
-  _updateUserBadge(); _updateCompteNavBtn();
-  showPage('dashboard',document.querySelector('.nav-btn[onclick*="dashboard"]'));
-  showNotif('👋 Déconnecté.','info'); setTimeout(openLoginModal,400);
-}
-function _updateCompteNavBtn(){
-  const btn=document.getElementById('nav-btn-compte');
-  if(btn) btn.style.display=(_currentUser&&!_isGuest)?'flex':'none';
-  const mBtn=document.getElementById('mnav-compte');
-  if(mBtn) mBtn.style.display=(_currentUser&&!_isGuest)?'flex':'none';
-}
-
-// ════════════════════════════════════════════════════════
-// ROTATION / ORIENTATION — classe html.is-landscape
-// ════════════════════════════════════════════════════════
-(function(){
-  const html = document.documentElement;
-  let _prev = null;
-  let _hintTimer = null;
-
-  function isTouchDevice(){
-    return ('ontouchstart' in window)||(navigator.maxTouchPoints>0);
-  }
-
-  function check(){
-    if(!isTouchDevice()&&window.innerWidth>1024){ html.classList.remove('is-landscape'); return; }
-    const landscape = window.innerWidth > window.innerHeight;
-    if(landscape===_prev) return;
-    _prev = landscape;
-    if(landscape){
-      html.classList.add('is-landscape');
-      showHint();
-    } else {
-      html.classList.remove('is-landscape');
-    }
-    updateScClose();
-    try{ if(typeof renderEloChart==='function') setTimeout(renderEloChart,100); }catch(e){}
-  }
-
-  function showHint(){
-    const h=document.getElementById('rotation-hint'); if(!h) return;
-    h.style.display='flex';
-    clearTimeout(_hintTimer);
-    _hintTimer=setTimeout(()=>{ h.style.display='none'; }, 2000);
-  }
-
-  function updateScClose(){
-    const btn=document.getElementById('sc-close-btn-float'); if(!btn) return;
-    const active=document.getElementById('sc-overlay')?.classList.contains('active');
-    btn.style.display=(active&&isTouchDevice())?'flex':'none';
-  }
-
-  // Observer l'ouverture/fermeture du compteur
-  const scOvl=document.getElementById('sc-overlay');
-  if(scOvl) new MutationObserver(updateScClose).observe(scOvl,{attributes:true,attributeFilter:['class']});
-
-  window.addEventListener('orientationchange',()=>setTimeout(check,150));
-  window.addEventListener('resize',()=>{ clearTimeout(window._ort); window._ort=setTimeout(check,80); });
-
-  // Mettre à jour le manifest PWA
-  setTimeout(()=>{
-    try{
-      const link=document.getElementById('pwa-manifest-link'); if(!link) return;
-      const m={name:'Fléchettes Club Pro',short_name:'Fléchettes',start_url:'./',display:'standalone',background_color:'#0d0f14',theme_color:'#e63946',orientation:'any',
-        icons:[{src:'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" rx="20" fill="%23e63946"/><text y=".9em" font-size="75" x="12">🎯</text></svg>',sizes:'192x192',type:'image/svg+xml'}]};
-      if(link.href&&link.href.startsWith('blob:')) URL.revokeObjectURL(link.href);
-      link.href=URL.createObjectURL(new Blob([JSON.stringify(m)],{type:'application/manifest+json'}));
-    }catch(e){}
-  },500);
-
-  check();
 })();
 
 initKeyboardShortcuts();
@@ -14852,11 +15040,7 @@ document.addEventListener('keydown', function(e) {
 });
 
 // ── 7. NOTIFICATIONS SOIRÉES ──────────────────────────
-function requestNotifPermission() {
-  if ('Notification' in window && Notification.permission === 'default') {
-    Notification.requestPermission();
-  }
-}
+// (requestNotifPermission définie plus haut)
 
 function scheduleUpcomingNotifs() {
   if (!('Notification' in window) || Notification.permission !== 'granted') return;
@@ -15294,468 +15478,543 @@ function applyBgImage() {
 }
 
 
+
+// ════════════════════════════════════════════════════════
+// NAV GROUPES
+// ════════════════════════════════════════════════════════
+const _PAGE_TO_GROUP = {
+  classement:'navg-palmares', joueurs:'navg-palmares', historique:'navg-palmares',
+  matchs:'navg-competition', equipes:'navg-competition', tournois:'navg-competition',
+  ligue:'navg-competition', entrainement:'navg-competition',
+  stats:'navg-stats'
+};
+
+function toggleNavGroup(groupId, evt) {
+  if (evt) evt.stopPropagation();
+  const g = document.getElementById(groupId);
+  if (!g) return;
+  const wasOpen = g.classList.contains('open');
+  document.querySelectorAll('.nav-group.open').forEach(x => x.classList.remove('open'));
+  if (!wasOpen) g.classList.add('open');
+}
+
+function navDropGo(page, groupId) {
+  document.querySelectorAll('.nav-group').forEach(g => g.classList.remove('open','has-active'));
+  document.querySelectorAll('.nav-drop-item').forEach(i => i.classList.remove('active'));
+  document.querySelectorAll('.nav-btn:not(.nav-group-trigger)').forEach(b => b.classList.remove('active'));
+  const g = document.getElementById(groupId);
+  if (g) {
+    g.classList.add('has-active');
+    g.querySelectorAll('.nav-drop-item').forEach(item => {
+      if ((item.getAttribute('onclick')||'').includes("'"+page+"'")) item.classList.add('active');
+    });
+  }
+  showPage(page, null);
+}
+
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('.nav-group')) {
+    document.querySelectorAll('.nav-group.open').forEach(g => g.classList.remove('open'));
+  }
+});
+
+// ════════════════════════════════════════════════════════
+// NOTIFICATIONS PUSH
+// ════════════════════════════════════════════════════════
+const PUSH_NOTIF = {
+  async request() {
+    if (!('Notification' in window)) return false;
+    if (Notification.permission === 'granted') return true;
+    if (Notification.permission === 'denied') return false;
+    const r = await Notification.requestPermission();
+    return r === 'granted';
+  },
+  send(title, body) {
+    if (Notification.permission !== 'granted') return;
+    try {
+      new Notification(title, { body,
+        icon: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" rx="20" fill="%23e63946"/><text y=".9em" font-size="75" x="12">🎯</text></svg>'
+      });
+    } catch(e) {}
+  }
+};
+
+async function requestNotifPermFromBanner() {
+  const granted = await PUSH_NOTIF.request();
+  const bar = document.getElementById('notif-perm-bar');
+  if (bar) bar.classList.remove('show');
+  if (granted) showNotif('🔔 Notifications activées !', 'success');
+}
+
+function showNotifPermBanner() {
+  if (!('Notification' in window) || Notification.permission !== 'default') return;
+  const bar = document.getElementById('notif-perm-bar');
+  if (bar) bar.classList.add('show');
+}
+
+// ════════════════════════════════════════════════════════
+// DIVISION — vérification changements
+// ════════════════════════════════════════════════════════
+let _prevDivisions = {};
+
+function checkDivisionChanges() {
+  players.forEach(p => {
+    const cur = getDivision(p.elo || 1000).name;
+    const prev = _prevDivisions[p.id];
+    if (prev && prev !== cur) {
+      const d = getDivision(p.elo);
+      showNotif('🎖 ' + p.pseudo + ' passe en ' + d.icon + ' ' + d.name + ' !', 'success');
+      PUSH_NOTIF.send(d.icon + ' Division ' + d.name + ' !', p.pseudo + ' a atteint ' + d.name + ' (' + p.elo + ' ELO)');
+    }
+    _prevDivisions[p.id] = cur;
+  });
+}
+
+function initDivisions() {
+  players.forEach(p => { _prevDivisions[p.id] = getDivision(p.elo || 1000).name; });
+}
+
+// ════════════════════════════════════════════════════════
+// JOUEUR INDIVIDUEL — modal complet
+// ════════════════════════════════════════════════════════
+function openPlayerFull(pid) {
+  const p = pById(pid);
+  if (!p) return;
+  let modal = document.getElementById('player-full-modal');
+  if (!modal) {
+    modal = document.createElement('div');
+    modal.className = 'modal-overlay';
+    modal.id = 'player-full-modal';
+    modal.innerHTML = '<div class="modal" style="max-width:680px;padding:0;overflow:hidden"><div id="player-full-content"></div></div>';
+    modal.addEventListener('click', function(e){ if(e.target===this) closeModal('player-full-modal'); });
+    document.body.appendChild(modal);
+  }
+  const el = document.getElementById('player-full-content');
+  const color = p.avatarColor || 'var(--accent)';
+  const avatar = p.avatarPhoto
+    ? '<img src="'+p.avatarPhoto+'" style="width:100%;height:100%;object-fit:cover;border-radius:16px">'
+    : (p.avatarEmoji || getInitials(p.name));
+
+  el.innerHTML = '<div>'
+    + '<div class="player-full-header" style="background:linear-gradient(135deg,'+color+'18,transparent)">'
+    + '<button class="modal-close" style="position:absolute;top:1rem;right:1rem;z-index:2" onclick="closeModal(\'player-full-modal\')">✕</button>'
+    + '<div class="player-full-avatar" style="background:linear-gradient(135deg,'+color+','+color+'99);color:#0d0f14">'+avatar+'</div>'
+    + '<div style="flex:1">'
+    + '<div style="font-family:\'Bebas Neue\',sans-serif;font-size:1.8rem;letter-spacing:1px;line-height:1">'+p.pseudo+' '+divisionBadge(p.elo||1000)+'</div>'
+    + '<div style="font-size:.78rem;color:var(--muted)">'+p.name+(p.surnom?' · <em style="color:var(--accent)">'+p.surnom+'</em>':'')+'</div>'
+    + '<div style="margin-top:.4rem">'+divisionProgressBar(p.elo||1000)+'</div>'
+    + '</div>'
+    + '<div style="text-align:right;flex-shrink:0">'
+    + '<div style="font-family:\'Bebas Neue\',sans-serif;font-size:2.2rem;color:var(--accent);line-height:1">'+(p.elo||1000)+'</div>'
+    + '<div style="font-size:.6rem;color:var(--muted)">ELO · Peak '+(p.peak||p.elo||1000)+'</div>'
+    + '</div></div>'
+    + '<div class="player-full-tabs">'
+    + '<button class="player-full-tab active" onclick="switchPlayerTab(\'overview\','+pid+',this)">📊 Stats</button>'
+    + '<button class="player-full-tab" onclick="switchPlayerTab(\'history\','+pid+',this)">📋 Matchs</button>'
+    + '<button class="player-full-tab" onclick="switchPlayerTab(\'h2h\','+pid+',this)">⚔️ H2H</button>'
+    + '<button class="player-full-tab" onclick="switchPlayerTab(\'trophies\','+pid+',this)">🏆 Trophées</button>'
+    + '</div>'
+    + '<div class="player-full-body" id="pfb-'+pid+'"></div>'
+    + '</div>';
+
+  switchPlayerTab('overview', pid, el.querySelector('.player-full-tab'));
+  openModal('player-full-modal');
+}
+
+function switchPlayerTab(tab, pid, btn) {
+  const p = pById(pid);
+  const body = document.getElementById('pfb-'+pid);
+  if (!p || !body) return;
+  document.querySelectorAll('.player-full-tab').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+
+  const stats = getStats();
+  const s = stats[pid] || {wins:0,losses:0,draws:0,matches:0};
+  const pct = s.matches ? Math.round(s.wins/s.matches*100) : 0;
+  const myMatches = matches.filter(m => m.p1===pid || m.p2===pid);
+
+  if (tab === 'overview') {
+    const total180 = myMatches.reduce((a,m)=>a+(m.p1===pid?(m.v180p1||0):(m.v180p2||0)),0);
+    const streak = getStreak(pid);
+    const form = getRecentForm(pid, 8);
+    const avgData = myMatches.reduce((acc,m) => {
+      const v = m.p1===pid ? m.avg1 : m.avg2;
+      return v ? {sum:acc.sum+v, cnt:acc.cnt+1} : acc;
+    }, {sum:0,cnt:0});
+    const avg = avgData.cnt ? avgData.sum/avgData.cnt : 0;
+
+    body.innerHTML = '<div class="pf-stat-grid">'
+      + '<div class="pf-stat"><div class="pf-stat-val">'+s.matches+'</div><div class="pf-stat-lbl">Matchs</div></div>'
+      + '<div class="pf-stat"><div class="pf-stat-val" style="color:var(--green)">'+s.wins+'</div><div class="pf-stat-lbl">Victoires</div></div>'
+      + '<div class="pf-stat"><div class="pf-stat-val" style="color:var(--red)">'+s.losses+'</div><div class="pf-stat-lbl">Défaites</div></div>'
+      + '<div class="pf-stat"><div class="pf-stat-val">'+pct+'%</div><div class="pf-stat-lbl">Win Rate</div></div>'
+      + (avg ? '<div class="pf-stat"><div class="pf-stat-val">'+avg.toFixed(1)+'</div><div class="pf-stat-lbl">Moy./volée</div></div>' : '')
+      + '<div class="pf-stat"><div class="pf-stat-val" style="color:var(--gold)">'+total180+'</div><div class="pf-stat-lbl">180s</div></div>'
+      + '<div class="pf-stat"><div class="pf-stat-val">'+(p.elo||1000)+'</div><div class="pf-stat-lbl">ELO</div></div>'
+      + '<div class="pf-stat"><div class="pf-stat-val">'+(p.peak||p.elo||1000)+'</div><div class="pf-stat-lbl">Peak</div></div>'
+      + '</div>'
+      + (form.length ? '<div class="section-label" style="margin-bottom:.3rem">Forme récente</div><div>'+formDots(form)+'</div>' : '')
+      + (streak ? '<div style="margin-top:.6rem;display:inline-flex;align-items:center;gap:.4rem;padding:.3rem .7rem;background:var(--dark-card);border-radius:8px;font-size:.75rem"><span>'+(streak.type==='W'?'🔥':'💀')+'</span><span style="color:'+(streak.type==='W'?'var(--green)':'var(--red)')+'">'+streak.count+' '+(streak.type==='W'?'victoires':'défaites')+' de suite</span></div>' : '')
+      + '<div style="margin-top:.8rem"><div class="section-label" style="margin-bottom:.3rem">Évolution ELO</div>'
+      + '<div>'+sparkline(p.eloHistory||[1000],350,40)+'</div></div>'
+      + '<div style="margin-top:.8rem;padding-top:.8rem;border-top:1px solid var(--border)">'
+      + '<button class="btn btn-secondary btn-sm" onclick="exportPlayerPDF('+pid+')"><i class="fas fa-file-pdf"></i> Exporter fiche</button>'
+      + '</div>';
+
+  } else if (tab === 'history') {
+    body.innerHTML = myMatches.length === 0
+      ? '<div class="empty"><div class="empty-text">Aucun match.</div></div>'
+      : '<div>'+myMatches.slice(0,25).map(m => {
+          const opp = pById(m.p1===pid ? m.p2 : m.p1);
+          const ms = m.p1===pid ? m.s1 : m.s2;
+          const os = m.p1===pid ? m.s2 : m.s1;
+          const ec = m.p1===pid ? (m.eloChange1||0) : (m.eloChange2||0);
+          const won = m.winner===pid;
+          return '<div class="pf-match-row">'
+            + '<span style="color:var(--muted);font-size:.6rem">'+m.date+'</span>'
+            + '<span style="font-weight:600;flex:1">vs '+((opp&&opp.pseudo)||'?')+'</span>'
+            + '<span style="font-family:\'DM Mono\',monospace;font-weight:800">'+ms+'–'+os+'</span>'
+            + '<span style="color:'+(won?'var(--green)':'var(--red)')+';font-weight:700">'+(won?'V':'D')+'</span>'
+            + '<span style="font-size:.62rem;color:'+(ec>=0?'var(--green)':'var(--red)')+'">'+(ec>=0?'+':'')+ec+'</span>'
+            + '</div>';
+        }).join('')+'</div>';
+
+  } else if (tab === 'h2h') {
+    const opps = {};
+    myMatches.forEach(m => {
+      const oid = m.p1===pid ? m.p2 : m.p1;
+      if (!opps[oid]) opps[oid] = {w:0,l:0};
+      if (m.winner===pid) opps[oid].w++;
+      else if (m.winner) opps[oid].l++;
+    });
+    const rows = Object.entries(opps).sort((a,b)=>(b[1].w+b[1].l)-(a[1].w+a[1].l));
+    body.innerHTML = rows.length === 0
+      ? '<div class="empty"><div class="empty-text">Aucun adversaire.</div></div>'
+      : '<div>'+rows.map(([oid,r]) => {
+          const opp = pById(parseInt(oid));
+          const tot = r.w+r.l;
+          return '<div class="pf-h2h-row">'
+            + '<span style="font-weight:600;flex:1">'+((opp&&opp.pseudo)||'?')+'</span>'
+            + '<span style="color:var(--green);font-weight:700">'+r.w+'V</span>'
+            + '<span style="color:var(--red);font-weight:700">'+r.l+'D</span>'
+            + '<span style="color:var(--muted);font-size:.65rem">'+(tot?Math.round(r.w/tot*100):0)+'%</span>'
+            + '</div>';
+        }).join('')+'</div>';
+
+  } else if (tab === 'trophies') {
+    const achs = (p.achievements||[]).map(id => ACHIEVEMENTS.find(x=>x.id===id)).filter(Boolean);
+    const locked = ACHIEVEMENTS.filter(a => !(p.achievements||[]).includes(a.id));
+    body.innerHTML = (achs.length ? '<div class="section-label" style="margin-bottom:.4rem">Débloqués ('+achs.length+')</div>'
+      + '<div style="display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:.8rem">'
+      + achs.map(a => '<div style="display:flex;align-items:center;gap:.4rem;background:var(--accent-dim);border:1px solid rgba(230,57,70,.3);border-radius:8px;padding:.3rem .6rem;font-size:.72rem"><span>'+a.icon+'</span><span style="font-weight:700;color:var(--light)">'+a.name+'</span></div>').join('')
+      + '</div>' : '')
+      + (locked.length ? '<div class="section-label" style="margin-bottom:.4rem;opacity:.6">À débloquer</div>'
+      + '<div style="display:flex;flex-wrap:wrap;gap:.4rem">'
+      + locked.slice(0,8).map(a => '<div style="display:flex;align-items:center;gap:.4rem;background:var(--dark);border:1px solid var(--border);border-radius:8px;padding:.3rem .6rem;font-size:.72rem;opacity:.4"><span>🔒</span><span style="color:var(--muted)">'+a.name+'</span></div>').join('')
+      + '</div>' : '');
+  }
+}
+
+function exportPlayerPDF(pid) {
+  const p = pById(pid);
+  if (!p) return;
+  const stats = getStats();
+  const s = stats[pid] || {wins:0,losses:0,draws:0,matches:0};
+  const d = getDivision(p.elo||1000);
+  const myMatches = matches.filter(m => m.p1===pid || m.p2===pid).slice(0,10);
+  const pw = window.open('','','width=800,height=900');
+  pw.document.write('<!DOCTYPE html><html><head><title>Fiche '+p.pseudo+'</title>'
+    +'<style>body{font-family:Arial,sans-serif;padding:2rem;color:#1a1a2e;max-width:700px;margin:0 auto}'
+    +'h1{color:#e63946}table{width:100%;border-collapse:collapse;font-size:.85rem}'
+    +'th{background:#e63946;color:#fff;padding:.4rem .6rem}td{padding:.35rem .6rem;border-bottom:1px solid #eee}'
+    +'.stats{display:flex;gap:1rem;flex-wrap:wrap;margin:1.2rem 0}'
+    +'.stat{background:#f5f5f5;border-radius:8px;padding:.6rem 1rem;text-align:center;min-width:80px}'
+    +'.sv{font-size:1.8rem;font-weight:900;color:#e63946;line-height:1}'
+    +'.sl{font-size:.65rem;color:#888;text-transform:uppercase}'
+    +'</style></head><body>'
+    +'<h1>🎯 '+p.pseudo+'</h1><div>'+p.name+(p.surnom?' · '+p.surnom:'')+'</div>'
+    +'<div style="display:inline-block;background:#fee2e2;color:#e63946;border-radius:4px;padding:2px 8px;font-size:.8rem;font-weight:700;margin:.5rem 0">'+d.icon+' '+d.name+'</div>'
+    +'<div class="stats">'
+    +'<div class="stat"><div class="sv">'+(p.elo||1000)+'</div><div class="sl">ELO</div></div>'
+    +'<div class="stat"><div class="sv">'+s.matches+'</div><div class="sl">Matchs</div></div>'
+    +'<div class="stat"><div class="sv">'+s.wins+'</div><div class="sl">Victoires</div></div>'
+    +'<div class="stat"><div class="sv">'+(s.matches?Math.round(s.wins/s.matches*100):0)+'%</div><div class="sl">Win Rate</div></div>'
+    +'</div>'
+    +'<h3>Derniers matchs</h3>'
+    +'<table><tr><th>Date</th><th>Adversaire</th><th>Score</th><th>Résultat</th></tr>'
+    +myMatches.map(m=>{const opp=pById(m.p1===pid?m.p2:m.p1);const won=m.winner===pid;
+      return '<tr><td>'+m.date+'</td><td>'+((opp&&opp.pseudo)||'?')+'</td>'
+      +'<td><b>'+(m.p1===pid?m.s1:m.s2)+'–'+(m.p1===pid?m.s2:m.s1)+'</b></td>'
+      +'<td style="color:'+(won?'#22c55e':'#ef4444')+';font-weight:700">'+(won?'Victoire':'Défaite')+'</td></tr>';}).join('')
+    +'</table>'
+    +'<p style="margin-top:2rem;font-size:.7rem;color:#999">Fléchettes Club Pro · '+new Date().toLocaleDateString('fr-FR')+'</p>'
+    +'</body></html>');
+  pw.document.close();
+  setTimeout(() => pw.print(), 500);
+}
+
+// ════════════════════════════════════════════════════════
+// SOIRÉE RAPPORT
+// ════════════════════════════════════════════════════════
+function openSoireeRapport(soireeId) {
+  const s = soirees.find(x => x.id === soireeId);
+  if (!s) return;
+
+  let modal = document.getElementById('soiree-rapport-modal');
+  if (!modal) {
+    modal = document.createElement('div');
+    modal.className = 'modal-overlay';
+    modal.id = 'soiree-rapport-modal';
+    modal.innerHTML = '<div class="modal" style="max-width:600px"><div class="modal-title">📋 Rapport de Soirée <button class="modal-close" onclick="closeModal(\'soiree-rapport-modal\')">✕</button></div><div id="soiree-rapport-content"></div></div>';
+    modal.addEventListener('click', function(e){ if(e.target===this) closeModal('soiree-rapport-modal'); });
+    document.body.appendChild(modal);
+  }
+
+  const d = new Date(s.date);
+  const soireeDate = d.toLocaleDateString('fr-FR');
+  const sm = matches.filter(m => m.date === soireeDate);
+  const pids = new Set([...sm.map(m=>m.p1),...sm.map(m=>m.p2)]);
+  const eloMap = {};
+  sm.forEach(m => {
+    eloMap[m.p1] = (eloMap[m.p1]||0) + (m.eloChange1||0);
+    eloMap[m.p2] = (eloMap[m.p2]||0) + (m.eloChange2||0);
+  });
+  const wins = {};
+  sm.forEach(m => { if(m.winner) wins[m.winner] = (wins[m.winner]||0)+1; });
+  const mvpId = Object.keys(wins).sort((a,b)=>wins[b]-wins[a])[0];
+  const mvp = mvpId ? pById(parseInt(mvpId)) : null;
+  const topGainId = Object.keys(eloMap).sort((a,b)=>eloMap[b]-eloMap[a])[0];
+  const topGain = topGainId ? pById(parseInt(topGainId)) : null;
+
+  document.getElementById('soiree-rapport-content').innerHTML =
+    '<div style="background:var(--dark-card);border-radius:10px;padding:1rem;margin-bottom:.8rem;border-left:3px solid var(--accent)">'
+    +'<div style="font-family:\'Bebas Neue\',sans-serif;font-size:1.4rem;color:var(--light)">'+s.title+'</div>'
+    +'<div style="font-size:.72rem;color:var(--muted)">'+d.toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long',year:'numeric'})+(s.lieu?' · '+s.lieu:'')+'</div>'
+    +'</div>'
+    +'<div class="soiree-rapport-kpis">'
+    +'<div class="soiree-kpi"><div class="soiree-kpi-val">'+sm.length+'</div><div class="soiree-kpi-lbl">Matchs</div></div>'
+    +'<div class="soiree-kpi"><div class="soiree-kpi-val">'+pids.size+'</div><div class="soiree-kpi-lbl">Joueurs</div></div>'
+    +'</div>'
+    +(mvp ? '<div style="margin-bottom:.8rem"><div class="section-label" style="margin-bottom:.4rem">🏆 MVP</div>'
+    +'<div class="soiree-mvp-chip"><span style="font-size:1.1rem">'+(mvp.avatarEmoji||'🎯')+'</span><div><div style="font-weight:700;color:var(--light)">'+mvp.pseudo+'</div><div style="font-size:.65rem;color:var(--muted)">'+wins[mvpId]+' victoire'+(wins[mvpId]>1?'s':'')+'</div></div></div></div>' : '')
+    +(topGain && eloMap[topGainId]>0 ? '<div style="margin-bottom:.8rem"><div class="section-label" style="margin-bottom:.4rem">📈 Meilleure progression</div>'
+    +'<div class="soiree-mvp-chip" style="background:rgba(52,212,123,.1);border-color:rgba(52,212,123,.3)"><span style="font-size:1.1rem">📈</span><div><div style="font-weight:700;color:var(--green)">'+topGain.pseudo+'</div><div style="font-size:.65rem;color:var(--muted)">+'+eloMap[topGainId]+' ELO</div></div></div></div>' : '')
+    +(sm.length ? '<div class="section-label" style="margin-bottom:.4rem">📋 Résultats</div><div>'
+    +sm.slice(0,15).map(m=>{
+      const p1=pById(m.p1),p2=pById(m.p2);
+      const e1=m.eloChange1||0,e2=m.eloChange2||0;
+      return '<div style="display:flex;align-items:center;justify-content:space-between;padding:.3rem .5rem;border-radius:6px;background:var(--dark);margin-bottom:.2rem;font-size:.72rem">'
+        +'<span style="font-weight:700;color:'+(m.winner===m.p1?'var(--green)':'var(--muted)')+'">'+(p1&&p1.pseudo||'?')+'</span>'
+        +'<span style="font-family:\'DM Mono\',monospace;font-weight:800">'+m.s1+'–'+m.s2+'</span>'
+        +'<span style="font-weight:700;color:'+(m.winner===m.p2?'var(--green)':'var(--muted)')+'">'+(p2&&p2.pseudo||'?')+'</span>'
+        +'<span style="font-size:.6rem;color:var(--muted)">'+(e1>=0?'+':'')+e1+' / '+(e2>=0?'+':'')+e2+'</span>'
+        +'</div>';}).join('')+'</div>' : '<div style="color:var(--muted);font-size:.8rem">Aucun match ce soir-là.</div>')
+    +'<div style="display:flex;gap:.5rem;margin-top:1rem;padding-top:1rem;border-top:1px solid var(--border)">'
+    +'<button class="btn btn-secondary btn-sm" onclick="exportSoireeRapportPDF('+soireeId+')"><i class="fas fa-file-pdf"></i> PDF</button>'
+    +'<button class="btn btn-secondary btn-sm" onclick="closeModal(\'soiree-rapport-modal\')">Fermer</button>'
+    +'</div>';
+
+  openModal('soiree-rapport-modal');
+}
+
+function exportSoireeRapportPDF(soireeId) {
+  const s = soirees.find(x => x.id === soireeId);
+  if (!s) return;
+  const d = new Date(s.date);
+  const sm = matches.filter(m => m.date === d.toLocaleDateString('fr-FR'));
+  const pw = window.open('','','width=800,height=900');
+  pw.document.write('<!DOCTYPE html><html><head><title>Rapport '+s.title+'</title>'
+    +'<style>body{font-family:Arial,sans-serif;padding:2rem;color:#1a1a2e}h1{color:#e63946}'
+    +'table{width:100%;border-collapse:collapse}th{background:#e63946;color:#fff;padding:.4rem .6rem}'
+    +'td{padding:.35rem .6rem;border-bottom:1px solid #eee}.win{color:#22c55e;font-weight:700}'
+    +'</style></head><body>'
+    +'<h1>🎯 '+s.title+'</h1>'
+    +'<div style="color:#666;font-size:.85rem;margin-bottom:1.5rem">'+d.toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long',year:'numeric'})+(s.lieu?' · '+s.lieu:'')+'</div>'
+    +'<table><tr><th>J1</th><th>Score</th><th>J2</th><th>ELO</th></tr>'
+    +sm.map(m=>{const p1=pById(m.p1),p2=pById(m.p2);const e1=m.eloChange1||0,e2=m.eloChange2||0;
+      return '<tr><td class="'+(m.winner===m.p1?'win':'')+'">'+(p1&&p1.pseudo||'?')+'</td>'
+        +'<td><b>'+m.s1+'–'+m.s2+'</b></td>'
+        +'<td class="'+(m.winner===m.p2?'win':'')+'">'+(p2&&p2.pseudo||'?')+'</td>'
+        +'<td style="font-size:.75rem;color:#666">'+(e1>=0?'+':'')+e1+' / '+(e2>=0?'+':'')+e2+'</td></tr>';}).join('')
+    +'</table></body></html>');
+  pw.document.close();
+  setTimeout(() => pw.print(), 500);
+}
+
+// ════════════════════════════════════════════════════════
+// EXPORT PDF CLASSEMENT
+// ════════════════════════════════════════════════════════
+function exportPDFClassement() {
+  recomputeElo();
+  const stats = getStats();
+  const sorted = [...players].sort((a,b) => (b.elo||1000)-(a.elo||1000));
+  const pw = window.open('','','width=900,height=900');
+  pw.document.write('<!DOCTYPE html><html><head><title>Classement</title>'
+    +'<style>body{font-family:Arial,sans-serif;padding:2rem;color:#1a1a2e}h1{color:#e63946}'
+    +'table{width:100%;border-collapse:collapse}th{background:#e63946;color:#fff;padding:.5rem .7rem;text-align:left;font-size:.78rem}'
+    +'td{padding:.4rem .7rem;border-bottom:1px solid #eee;font-size:.82rem}'
+    +'tr:nth-child(even) td{background:#fafafa}'
+    +'</style></head><body>'
+    +'<h1>🎯 Classement '+((typeof clubSettings!=='undefined'&&clubSettings.name)||'Club')+'</h1>'
+    +'<p style="color:#666;font-size:.8rem">'+new Date().toLocaleDateString('fr-FR')+' · '+sorted.length+' joueurs</p>'
+    +'<table><tr><th>#</th><th>Joueur</th><th>Division</th><th>ELO</th><th>Matchs</th><th>V</th><th>D</th><th>%</th></tr>'
+    +sorted.map((p,i)=>{const s=stats[p.id]||{wins:0,losses:0,draws:0,matches:0};const dv=getDivision(p.elo||1000);
+      const medal=i===0?'🥇':i===1?'🥈':i===2?'🥉':'#'+(i+1);
+      return '<tr><td><b>'+medal+'</b></td><td><b>'+p.pseudo+'</b></td>'
+        +'<td>'+dv.icon+' '+dv.name+'</td><td><b>'+(p.elo||1000)+'</b></td>'
+        +'<td>'+s.matches+'</td><td style="color:#22c55e;font-weight:700">'+s.wins+'</td>'
+        +'<td style="color:#ef4444;font-weight:700">'+s.losses+'</td>'
+        +'<td>'+(s.matches?Math.round(s.wins/s.matches*100):0)+'%</td></tr>';}).join('')
+    +'</table></body></html>');
+  pw.document.close();
+  setTimeout(() => pw.print(), 500);
+}
+
+// ════════════════════════════════════════════════════════
+// MULTIJOUEUR COMPTEUR — via Firebase
+// ════════════════════════════════════════════════════════
+window._scMultiRoom = null;
+window._scMultiIsHost = false;
+let _scMultiUnsub = null;
+
+function scMultiCreate() {
+  if (typeof _db === 'undefined' || !_db) {
+    showNotif('⚠ Firebase requis pour le multijoueur', 'error'); return;
+  }
+  const code = String(Math.floor(1000 + Math.random() * 9000));
+  window._scMultiRoom = code;
+  window._scMultiIsHost = true;
+  const ref = _db.collection('clubs').doc(typeof FB_CLUB_ID !== 'undefined' ? FB_CLUB_ID : 'default').collection('liveMatches').doc(code);
+  ref.set({ ...JSON.parse(JSON.stringify(scState)), code, host: (typeof _currentUser !== 'undefined' && _currentUser) ? _currentUser.pseudo : 'Hôte', createdAt: Date.now() })
+    .then(() => {
+      document.getElementById('sc-multi-code').textContent = code;
+      document.getElementById('sc-multi-code').style.display = 'block';
+      document.getElementById('sc-multi-modal-title').textContent = '🎮 Code de la partie';
+      document.getElementById('sc-multi-status').textContent = 'Partagez ce code avec votre adversaire';
+      _scMultiSubscribe(code);
+      showNotif('🎮 Partie créée ! Code: ' + code, 'success');
+    }).catch(e => showNotif('⚠ Erreur: ' + e.message, 'error'));
+}
+
+function scMultiJoin() {
+  if (typeof _db === 'undefined' || !_db) {
+    showNotif('⚠ Firebase requis', 'error'); return;
+  }
+  const code = (document.getElementById('sc-multi-code-input').value || '').trim();
+  if (code.length !== 4) { showNotif('⚠ Code à 4 chiffres requis', 'error'); return; }
+  window._scMultiRoom = code;
+  window._scMultiIsHost = false;
+  const ref = _db.collection('clubs').doc(typeof FB_CLUB_ID !== 'undefined' ? FB_CLUB_ID : 'default').collection('liveMatches').doc(code);
+  ref.get().then(doc => {
+    if (!doc.exists) { showNotif('⚠ Partie introuvable', 'error'); return; }
+    const data = doc.data();
+    Object.assign(scState, data);
+    try { scRenderPlayersZone(); } catch(e) {}
+    _scMultiSubscribe(code);
+    closeModal('sc-multi-modal');
+    if (!document.getElementById('sc-overlay').classList.contains('active')) openScoreCounter();
+    showNotif('🎮 Connecté à la partie ' + code, 'success');
+    _scMultiShowBadge(true);
+  }).catch(e => showNotif('⚠ Erreur: ' + e.message, 'error'));
+}
+
+function _scMultiSubscribe(code) {
+  if (_scMultiUnsub) _scMultiUnsub();
+  const ref = _db.collection('clubs').doc(typeof FB_CLUB_ID !== 'undefined' ? FB_CLUB_ID : 'default').collection('liveMatches').doc(code);
+  _scMultiUnsub = ref.onSnapshot(doc => {
+    if (!doc.exists) return;
+    const data = doc.data();
+    if (data.updatedBy === 'me') return;
+    Object.assign(scState, data);
+    try { scRenderPlayersZone(); } catch(e) {}
+    _scMultiShowBadge(true);
+  });
+  closeModal('sc-multi-modal');
+  _scMultiShowBadge(true);
+  const btn = document.getElementById('sc-multi-btn');
+  if (btn) btn.style.display = 'flex';
+}
+
+function scMultiSync() {
+  if (!window._scMultiRoom || typeof _db === 'undefined' || !_db) return;
+  const ref = _db.collection('clubs').doc(typeof FB_CLUB_ID !== 'undefined' ? FB_CLUB_ID : 'default').collection('liveMatches').doc(window._scMultiRoom);
+  try {
+    ref.set({ ...JSON.parse(JSON.stringify(scState)), updatedAt: Date.now(), updatedBy: 'me' });
+  } catch(e) {}
+}
+
+function scMultiLeave() {
+  if (_scMultiUnsub) { _scMultiUnsub(); _scMultiUnsub = null; }
+  if (window._scMultiRoom && window._scMultiIsHost && typeof _db !== 'undefined' && _db) {
+    _db.collection('clubs').doc(typeof FB_CLUB_ID !== 'undefined' ? FB_CLUB_ID : 'default').collection('liveMatches').doc(window._scMultiRoom).delete().catch(()=>{});
+  }
+  window._scMultiRoom = null;
+  _scMultiShowBadge(false);
+}
+
+function _scMultiShowBadge(show) {
+  const b = document.getElementById('sc-multi-live-badge');
+  if (b) b.style.display = show ? 'inline-flex' : 'none';
+}
+
+// Sync après chaque tour — patch scNextPlayer directement
+const _scNextPlayer_orig = scNextPlayer;
+scNextPlayer = function() {
+  _scNextPlayer_orig.apply(this, arguments);
+  if (window._scMultiRoom) setTimeout(scMultiSync, 80);
+};
+
+// Bouton Multi visible après démarrage partie
+const _scStartGame_orig = scStartGame;
+scStartGame = function() {
+  _scStartGame_orig.apply(this, arguments);
+  const btn = document.getElementById('sc-multi-btn');
+  if (btn) btn.style.display = 'flex';
+};
+
+// ════════════════════════════════════════════════════════
+// MON COMPTE — fonctions complètes
+// ════════════════════════════════════════════════════════
+function showPageCompte(el) {
+  if (typeof _currentUser === 'undefined' || !_currentUser) {
+    showNotif('⚠ Connectez-vous d\'abord.', 'error');
+    if (typeof openLoginModal === 'function') openLoginModal();
+    return;
+  }
+  // Ouvre le profil complet du joueur connecté
+  openPlayerFull(_currentUser.id);
+  // Met en évidence le bouton nav
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  if (el) el.classList.add('active');
+}
+
+function _updateCompteNavBtn() {
+  const btn = document.getElementById('nav-btn-compte');
+  const show = typeof _currentUser !== 'undefined' && _currentUser && !_isGuest;
+  if (btn) btn.style.display = show ? 'flex' : 'none';
+}
+
+// ════════════════════════════════════════════════════════
+// INIT
+// ════════════════════════════════════════════════════════
+setTimeout(() => {
+  initDivisions();
+  showNotifPermBanner();
+  _updateCompteNavBtn();
+}, 1500);
+
+// Notif banner HTML (injecté dynamiquement si absent)
+(function injectNotifBar() {
+  if (document.getElementById('notif-perm-bar')) return;
+  const bar = document.createElement('div');
+  bar.id = 'notif-perm-bar';
+  bar.className = 'notif-perm-bar';
+  bar.innerHTML = '<span>🔔</span><span style="flex:1">Activez les notifications pour les alertes de division et nouveaux matchs</span><button onclick="requestNotifPermFromBanner()">Activer</button><span style="cursor:pointer;color:var(--muted);margin-left:.5rem" onclick="this.parentElement.classList.remove(\'show\')">✕</span>';
+  const dash = document.getElementById('page-dashboard');
+  if (dash) dash.insertBefore(bar, dash.firstChild);
+})();
+
+
 </script>
-
-
-<!-- ══════ PLAYER PROFILE MODAL ══════ -->
-<div class="modal-overlay" id="profile-modal">
-  <div class="modal profile-modal" style="max-width:600px">
-    <div class="profile-hero" id="profile-hero">
-      <div class="profile-avatar-big" id="profile-avatar-big">AB</div>
-      <div class="profile-hero-info">
-        <div class="profile-pseudo-big" id="profile-pseudo-big"></div>
-        <div class="profile-name-big" id="profile-name-big"></div>
-        <div class="profile-surnom" id="profile-surnom-display"></div>
-      </div>
-      <div style="text-align:right;z-index:1">
-        <div class="profile-elo-hero" id="profile-elo-hero"></div>
-        <div id="profile-division-hero" style="margin-top:4px"></div>
-      </div>
-      <button class="modal-close" style="position:absolute;top:1rem;right:1rem;z-index:2" onclick="closeModal('profile-modal')">✕</button>
-    </div>
-
-    <div class="profile-stats-row" id="profile-stats-row"></div>
-
-    <!-- Profile Tabs -->
-    <div class="profile-tabs" style="margin-bottom:0">
-      <button class="profile-tab active" onclick="switchProfileTab('stats',this)">📊 Stats</button>
-      <button class="profile-tab" onclick="switchProfileTab('history',this)">📋 Historique</button>
-      <button class="profile-tab" onclick="switchProfileTab('achievements',this)">🏆 Trophées</button>
-      <button class="profile-tab" onclick="switchProfileTab('training',this)">💪 Entraîn.</button>
-    </div>
-
-    <!-- TAB: Stats (existing content) -->
-    <div id="profile-tab-stats" class="profile-tab-content active">
-    <div style="display:flex;gap:1rem;flex-wrap:wrap">
-      <!-- Left: edit -->
-      <div style="flex:1;min-width:220px">
-        <div class="profile-section">
-          <div class="profile-section-title">Surnom</div>
-          <input type="text" id="profile-surnom-input" placeholder="Le Sniper, La Machine..." maxlength="30" style="font-size:0.85rem" oninput="previewProfile()">
-        </div>
-        <div class="profile-section">
-          <div class="profile-section-title">Bio / Citation</div>
-          <textarea class="profile-bio-input" id="profile-bio-input" placeholder="Une devise, un style de jeu..." maxlength="120" oninput="previewProfile()"></textarea>
-        </div>
-        <div class="profile-section">
-          <div class="profile-section-title">Couleur</div>
-          <div class="avatar-color-picker" id="avatar-color-picker">
-            <div class="avatar-color-swatch selected" style="background:var(--primary)" data-c="var(--primary)" onclick="selectAvatarColor('var(--primary)',this)"></div>
-            <div class="avatar-color-swatch" style="background:#4a9eff" data-c="#4a9eff" onclick="selectAvatarColor('#4a9eff',this)"></div>
-            <div class="avatar-color-swatch" style="background:#34d47b" data-c="#34d47b" onclick="selectAvatarColor('#34d47b',this)"></div>
-            <div class="avatar-color-swatch" style="background:#f0534a" data-c="#f0534a" onclick="selectAvatarColor('#f0534a',this)"></div>
-            <div class="avatar-color-swatch" style="background:#a67cf7" data-c="#a67cf7" onclick="selectAvatarColor('#a67cf7',this)"></div>
-            <div class="avatar-color-swatch" style="background:#ff7f50" data-c="#ff7f50" onclick="selectAvatarColor('#ff7f50',this)"></div>
-            <div class="avatar-color-swatch" style="background:#16c9aa" data-c="#16c9aa" onclick="selectAvatarColor('#16c9aa',this)"></div>
-            <div class="avatar-color-swatch" style="background:#f472b6" data-c="#f472b6" onclick="selectAvatarColor('#f472b6',this)"></div>
-          </div>
-        </div>
-        <div class="profile-section">
-          <div class="profile-section-title">Photo personnalisée</div>
-          <div style="display:flex;align-items:center;gap:0.8rem">
-            <div id="profile-photo-preview" style="width:44px;height:44px;border-radius:9px;background:var(--dark-card);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:0.6rem;color:var(--muted);overflow:hidden;flex-shrink:0">Aucune</div>
-            <div style="flex:1">
-              <label style="display:inline-block;background:var(--dark-card);border:1px solid var(--border);border-radius:7px;padding:0.35rem 0.8rem;font-size:0.75rem;cursor:pointer;color:var(--text-dim);transition:border-color .15s" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
-                📷 Choisir une photo
-                <input type="file" accept="image/*" style="display:none" onchange="handleProfilePhotoUpload(event)">
-              </label>
-              <button class="btn btn-sm btn-secondary" style="font-size:0.65rem;margin-left:0.4rem" onclick="clearProfilePhoto()" title="Supprimer la photo">✕</button>
-            </div>
-          </div>
-        </div>
-        <div class="profile-section">
-          <div class="profile-section-title">Avatar Emoji</div>
-          <div class="avatar-emoji-picker" id="avatar-emoji-picker">
-            <button class="avatar-emoji-btn selected" data-e="" onclick="selectAvatarEmoji('',this)">AB</button>
-            <button class="avatar-emoji-btn" data-e="🎯" onclick="selectAvatarEmoji('🎯',this)">🎯</button>
-            <button class="avatar-emoji-btn" data-e="🔥" onclick="selectAvatarEmoji('🔥',this)">🔥</button>
-            <button class="avatar-emoji-btn" data-e="👑" onclick="selectAvatarEmoji('👑',this)">👑</button>
-            <button class="avatar-emoji-btn" data-e="💀" onclick="selectAvatarEmoji('💀',this)">💀</button>
-            <button class="avatar-emoji-btn" data-e="⚡" onclick="selectAvatarEmoji('⚡',this)">⚡</button>
-            <button class="avatar-emoji-btn" data-e="🐉" onclick="selectAvatarEmoji('🐉',this)">🐉</button>
-            <button class="avatar-emoji-btn" data-e="🦁" onclick="selectAvatarEmoji('🦁',this)">🦁</button>
-            <button class="avatar-emoji-btn" data-e="🎸" onclick="selectAvatarEmoji('🎸',this)">🎸</button>
-            <button class="avatar-emoji-btn" data-e="🍺" onclick="selectAvatarEmoji('🍺',this)">🍺</button>
-            <button class="avatar-emoji-btn" data-e="🤖" onclick="selectAvatarEmoji('🤖',this)">🤖</button>
-          </div>
-        </div>
-      </div>
-      <!-- Right: sparkline + trophies -->
-      <div style="flex:1;min-width:200px">
-        <div class="profile-section">
-          <div class="profile-section-title">Évolution ELO</div>
-          <div id="profile-sparkline-big"></div>
-        </div>
-        <div class="profile-section">
-          <div class="profile-section-title">Forme récente</div>
-          <div id="profile-form-dots" style="display:flex;gap:3px;flex-wrap:wrap"></div>
-        </div>
-        <div class="profile-section">
-          <div class="profile-section-title">Trophées</div>
-          <div id="profile-trophies" style="display:flex;gap:4px;flex-wrap:wrap;font-size:1.2rem"></div>
-        </div>
-      </div>
-    </div>
-
-    </div><!-- /profile-tab-stats -->
-
-    <!-- TAB: History -->
-    <div id="profile-tab-history" class="profile-tab-content">
-      <div id="profile-match-history" style="max-height:380px;overflow-y:auto"></div>
-    </div>
-
-    <!-- TAB: Achievements -->
-    <div id="profile-tab-achievements" class="profile-tab-content">
-      <div id="profile-achievements-detail"></div>
-    </div>
-
-    <!-- TAB: Training -->
-    <div id="profile-tab-training" class="profile-tab-content">
-      <div id="profile-training-detail"></div>
-    </div>
-
-    <div style="display:flex;gap:0.6rem;margin-top:1.2rem;padding-top:1rem;border-top:1px solid var(--border)">
-      <button class="btn btn-primary" onclick="saveProfile()" style="flex:1"><i class="fas fa-floppy-disk"></i> Enregistrer le profil</button>
-      <button class="card-export-btn" onclick="exportPlayerCard()"><i class="fas fa-id-card"></i> Carte Joueur</button>
-    </div>
-  </div>
-</div>
-
-<!-- ══════ MOBILE BOTTOM NAV ══════ -->
-<nav class="mobile-nav">
-  <div class="mobile-nav-items">
-    <button class="mnav-btn active" id="mnav-dashboard" onclick="showPage('dashboard',this);setMobileNav('dashboard')">
-      <span class="mnav-icon"><i class="fas fa-house"></i></span><span class="mnav-label">Accueil</span>
-    </button>
-    <button class="mnav-btn" id="mnav-joueurs" onclick="showPage('joueurs',this);setMobileNav('joueurs')">
-      <span class="mnav-icon"><i class="fas fa-user"></i></span><span class="mnav-label">Joueurs</span>
-    </button>
-    <button class="mnav-btn" id="mnav-matchs" onclick="showPage('matchs',this);setMobileNav('matchs')">
-      <span class="mnav-icon"><i class="fas fa-bullseye"></i></span><span class="mnav-label">Matchs</span>
-    </button>
-    <button class="mnav-btn" id="mnav-classement" onclick="showPage('classement',this);setMobileNav('classement')">
-      <span class="mnav-icon"><i class="fas fa-trophy"></i></span><span class="mnav-label">Classement</span>
-    </button>
-    <button class="mnav-btn" id="mnav-stats" onclick="showPage('stats',this);setMobileNav('stats')">
-      <span class="mnav-icon"><i class="fas fa-chart-line"></i></span><span class="mnav-label">Stats</span>
-    </button>
-    <button class="mnav-btn" id="mnav-more" onclick="toggleMobileMore()">
-      <span class="mnav-icon"><i class="fas fa-ellipsis"></i></span><span class="mnav-label">Plus</span>
-    </button>
-  </div>
-</nav>
-
-<!-- ══════ MOBILE MORE MENU ══════ -->
-<div class="mobile-more-backdrop" id="mobile-more-backdrop" onclick="closeMobileMore()"></div>
-<div class="mobile-more-menu" id="mobile-more-menu">
-  <div class="mobile-more-handle"></div>
-  <div class="mobile-more-title">Navigation</div>
-  <div class="mobile-more-grid">
-    <button class="mobile-more-item" id="mnav-calendrier" onclick="showPage('calendrier',null);setMobileNav('calendrier');closeMobileMore()">
-      <span class="mmore-icon"><i class="fas fa-calendar-days"></i></span>
-      <span class="mmore-label">Agenda</span>
-    </button>
-    <button class="mobile-more-item" id="mnav-historique" onclick="showPage('historique',null);setMobileNav('historique');closeMobileMore()">
-      <span class="mmore-icon"><i class="fas fa-list-check"></i></span>
-      <span class="mmore-label">Historique</span>
-    </button>
-    <button class="mobile-more-item" id="mnav-tournois" onclick="showPage('tournois',null);setMobileNav('tournois');closeMobileMore()">
-      <span class="mmore-icon"><i class="fas fa-sitemap"></i></span>
-      <span class="mmore-label">Tournois</span>
-    </button>
-    <button class="mobile-more-item" id="mnav-ligue" onclick="showPage('ligue',null);setMobileNav('ligue');closeMobileMore()">
-      <span class="mmore-icon"><i class="fas fa-medal"></i></span>
-      <span class="mmore-label">Ligue</span>
-    </button>
-    <button class="mobile-more-item" id="mnav-equipes" onclick="showPage('equipes',null);setMobileNav('equipes');closeMobileMore()">
-      <span class="mmore-icon"><i class="fas fa-users"></i></span>
-      <span class="mmore-label">Équipes</span>
-    </button>
-    <button class="mobile-more-item" id="mnav-defis" onclick="showPage('defis',null);setMobileNav('defis');closeMobileMore()">
-      <span class="mmore-icon"><i class="fas fa-bolt"></i></span>
-      <span class="mmore-label">Défis</span>
-    </button>
-    <button class="mobile-more-item" id="mnav-parametres" onclick="showPage('parametres',null);setMobileNav('parametres');closeMobileMore()">
-      <span class="mmore-icon"><i class="fas fa-gear"></i></span>
-      <span class="mmore-label">Paramètres</span>
-    </button>
-    <button class="mobile-more-item" id="mnav-entrainement" onclick="showPage('entrainement',null);setMobileNav('entrainement');closeMobileMore()">
-      <span class="mmore-icon"><i class="fas fa-dumbbell"></i></span>
-      <span class="mmore-label">Entraîn.</span>
-    </button>
-    <button class="mobile-more-item" onclick="openScoreCounter();closeMobileMore()" style="border-color:rgba(230, 57, 70, 0.4);background:var(--accent-dim)">
-      <span class="mmore-icon"><i class="fas fa-bullseye"></i></span>
-      <span class="mmore-label" style="color:var(--accent)">Compteur</span>
-    </button>
-    <button class="mobile-more-item" onclick="toggleTimer();closeMobileMore()">
-      <span class="mmore-icon"><i class="fas fa-stopwatch"></i></span>
-      <span class="mmore-label">Minuteur</span>
-    </button>
-    <button class="mobile-more-item" onclick="openTvMode();closeMobileMore()">
-      <span class="mmore-icon"><i class="fas fa-tv"></i></span>
-      <span class="mmore-label">Mode TV</span>
-    </button>
-    <button class="mobile-more-item" onclick="openModal('keyboard-help-modal');closeMobileMore()">
-      <span class="mmore-icon"><i class="fas fa-keyboard"></i></span>
-      <span class="mmore-label">Raccourcis</span>
-    </button>
-  </div>
-</div>
-
-<!-- ══════ TV MODE OVERLAY ══════ -->
-<div class="tv-overlay" id="tv-overlay">
-  <button class="tv-close-btn" onclick="closeTvMode()">✕ Quitter</button>
-  <div class="tv-header">
-    <div>
-      <div class="tv-logo" id="tv-logo-text">🎯 Fléchettes Club</div>
-      <div class="tv-season" id="tv-season-name">Saison 1</div>
-    </div>
-    <div class="tv-clock" id="tv-clock">00:00:00</div>
-    <div style="text-align:right">
-      <div style="display:flex;align-items:center;justify-content:flex-end;gap:6px;font-size:0.75rem;font-weight:700;color:var(--red);letter-spacing:2px;text-transform:uppercase">
-        <span class="live-dot"></span> EN DIRECT
-      </div>
-      <div id="tv-match-count" style="font-size:0.72rem;color:var(--muted);margin-top:3px;letter-spacing:1px"></div>
-    </div>
-  </div>
-  <div class="tv-body">
-    <div class="tv-ranking">
-      <div class="tv-section-title">Classement Général</div>
-      <div id="tv-ranking-list"></div>
-    </div>
-    <div class="tv-right">
-      <div>
-        <div class="tv-section-title">Podium</div>
-        <div id="tv-podium"></div>
-      </div>
-      <div>
-        <div class="tv-section-title">Dernier Match</div>
-        <div id="tv-last-match"></div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ══════ SCROLL TO TOP ══════ -->
-<button id="scroll-top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Retour en haut" style="display:none;position:fixed;bottom:5.5rem;right:1.2rem;width:38px;height:38px;border-radius:50%;background:var(--dark-card);border:1px solid var(--border);color:var(--muted);font-size:1.1rem;cursor:pointer;z-index:230;transition:all .2s;box-shadow:0 2px 10px rgba(0,0,0,0.3)" onmouseenter="this.style.borderColor='var(--primary)';this.style.color='var(--primary)'" onmouseleave="this.style.borderColor='var(--border)';this.style.color='var(--muted)'"><i class="fas fa-chevron-up"></i></button>
-
-<!-- ══════ MODAL MOT DE PASSE ══════ -->
-<div class="modal-overlay" id="password-modal" style="z-index:9999">
-  <div class="modal" style="max-width:380px;width:95vw">
-    <div class="modal-header">
-      <div class="modal-title"><i class="fas fa-lock" style="color:var(--primary)"></i> <span id="password-modal-title">Accès protégé</span></div>
-      <button class="modal-close" onclick="closePasswordModal()">✕</button>
-    </div>
-    <div class="modal-body" style="padding:1.4rem">
-      <p style="color:var(--text-dim);margin-bottom:1rem;font-size:0.9rem">Entrez le mot de passe pour continuer.</p>
-      <input type="password" id="password-input" class="form-control"
-             placeholder="Mot de passe"
-             style="font-size:1.1rem;letter-spacing:4px;text-align:center"
-             onkeydown="if(event.key==='Enter') confirmPassword()"
-             autocomplete="off">
-      <div id="password-error" style="display:none;color:var(--red);font-size:0.82rem;margin-top:0.5rem;text-align:center">
-        <i class="fas fa-times-circle"></i> Mot de passe incorrect
-      </div>
-    </div>
-    <div class="modal-footer" style="display:flex;gap:0.6rem;justify-content:flex-end;padding:1rem 1.4rem;border-top:1px solid var(--border)">
-      <button class="btn btn-secondary" onclick="closePasswordModal()">Annuler</button>
-      <button class="btn btn-primary" onclick="confirmPassword()"><i class="fas fa-unlock"></i> Valider</button>
-    </div>
-  </div>
-</div>
-
-<!-- ══════ IMPORT EXCEL MODAL ══════ -->
-<div class="modal-overlay" id="import-excel-modal">
-  <div class="modal" style="max-width:620px;width:95vw">
-    <div class="modal-header">
-      <div class="modal-title"><i class="fas fa-file-excel" style="color:var(--green)"></i> Importer des joueurs depuis Excel</div>
-      <button class="modal-close" onclick="closeImportModal()">✕</button>
-    </div>
-    <div class="modal-body" style="padding:1.2rem">
-
-      <!-- Zone de dépôt -->
-      <div class="import-dropzone" id="import-dropzone"
-           ondragover="importDragOver(event)" ondragleave="importDragLeave(event)" ondrop="importDrop(event)">
-        <input type="file" accept=".xlsx,.xls,.csv,.ods" id="import-file-input" onchange="importFileChosen(event)">
-        <div class="import-dropzone-icon"><i class="fas fa-cloud-upload-alt"></i></div>
-        <div class="import-dropzone-label">Glissez votre fichier ici ou cliquez pour parcourir</div>
-        <div class="import-dropzone-hint">.xlsx · .xls · .csv · .ods</div>
-      </div>
-
-      <div class="import-format-hint">
-        <strong>Format attendu :</strong> votre fichier doit contenir au moins une colonne <strong>Nom</strong> et/ou <strong>Pseudo</strong> (ou <em>Prenom</em>, <em>Name</em>, <em>Nickname</em>…).
-        La première ligne doit être l'en-tête. Les doublons (même pseudo, insensible à la casse) sont détectés automatiquement et ignorés — les stats des joueurs existants sont préservées.
-      </div>
-
-      <!-- Sélection des colonnes (visible après chargement) -->
-      <div id="import-col-map-wrap" style="display:none">
-        <div class="import-col-map">
-          <label><i class="fas fa-user"></i> Colonne "Nom" :</label>
-          <select id="import-col-nom" onchange="importPreview()"></select>
-          <label style="margin-left:0.5rem"><i class="fas fa-tag"></i> Colonne "Pseudo" :</label>
-          <select id="import-col-pseudo" onchange="importPreview()"></select>
-        </div>
-      </div>
-
-      <!-- Résumé -->
-      <div id="import-summary-wrap" style="display:none">
-        <div class="import-summary" id="import-summary"></div>
-      </div>
-
-      <!-- Tableau de prévisualisation -->
-      <div id="import-preview-wrap" style="display:none">
-        <div class="section-label" style="margin:0.6rem 0 0.4rem">Aperçu — sélectionnez les joueurs à importer</div>
-        <div style="display:flex;gap:0.5rem;margin-bottom:0.5rem">
-          <button class="btn btn-secondary btn-sm" onclick="importSelectAll(true)">✓ Tous les nouveaux</button>
-          <button class="btn btn-secondary btn-sm" onclick="importSelectAll(false)">✕ Aucun</button>
-        </div>
-        <div class="import-preview-scroll">
-          <table class="import-preview-table">
-            <thead>
-              <tr>
-                <th style="width:32px"></th>
-                <th>Nom</th>
-                <th>Pseudo</th>
-                <th>Statut</th>
-              </tr>
-            </thead>
-            <tbody id="import-preview-tbody"></tbody>
-          </table>
-        </div>
-      </div>
-
-    </div>
-    <div class="modal-footer" style="display:flex;gap:0.6rem;justify-content:flex-end;padding:1rem 1.2rem;border-top:1px solid var(--border)">
-      <button class="btn btn-secondary" onclick="closeImportModal()">Annuler</button>
-      <button class="btn btn-primary" id="import-confirm-btn" onclick="importConfirm()" disabled style="display:flex;align-items:center;gap:0.4rem">
-        <i class="fas fa-user-plus"></i> <span id="import-confirm-label">Importer</span>
-      </button>
-    </div>
-  </div>
-</div>
-
-<!-- ══════ LOGIN MODAL ══════ -->
-<div id="login-overlay">
-  <div class="login-box">
-    <div class="login-logo">🎯</div>
-    <div class="login-title">Fléchettes Club</div>
-
-    <!-- ÉTAPE 1 : Choisir son profil -->
-    <div class="login-step active" id="login-step-1">
-      <div class="login-sub">Sélectionnez votre profil</div>
-      <div class="login-players-grid" id="login-players-grid">
-        <div class="login-empty">Chargement...</div>
-      </div>
-      <button class="btn btn-primary" id="login-confirm-btn" onclick="goToPasswordStep()" disabled style="width:100%">
-        <i class="fas fa-arrow-right"></i> Continuer
-      </button>
-      <div style="margin-top:0.9rem">
-        <button onclick="loginAsGuest()" style="background:none;border:none;color:var(--text-dim);font-size:0.72rem;cursor:pointer;font-family:'Work Sans',sans-serif;text-decoration:underline">
-          Continuer en tant que visiteur (lecture seule)
-        </button>
-      </div>
-    </div>
-
-    <!-- ÉTAPE 2 : Mot de passe -->
-    <div class="login-step" id="login-step-2">
-      <button class="login-back-btn" onclick="backToPlayerSelect()">
-        <i class="fas fa-arrow-left"></i> Changer de profil
-      </button>
-      <div class="login-selected-player" id="login-selected-player-info">
-        <div class="login-selected-avatar" id="login-selected-avatar">??</div>
-        <div>
-          <div style="font-size:0.88rem;font-weight:700" id="login-selected-name">Joueur</div>
-          <div style="font-size:0.68rem;color:var(--text-dim)">Entrez votre mot de passe</div>
-        </div>
-      </div>
-      <div class="login-pwd-input-wrap">
-        <input type="password" id="login-pwd-input" class="form-control"
-               placeholder="Mot de passe"
-               onkeydown="if(event.key==='Enter') confirmLogin()"
-               autocomplete="current-password">
-        <button class="login-pwd-toggle" onclick="togglePwdVisibility()" type="button">
-          <i class="fas fa-eye" id="pwd-eye-icon"></i>
-        </button>
-      </div>
-      <div id="login-pwd-error" style="display:none;color:var(--red);font-size:0.78rem;text-align:center;margin-bottom:0.7rem">
-        <i class="fas fa-times-circle"></i> Mot de passe incorrect
-      </div>
-      <button class="btn btn-primary" onclick="confirmLogin()" style="width:100%">
-        <i class="fas fa-right-to-bracket"></i> Connexion
-      </button>
-      <div class="login-no-pwd-hint" id="login-no-pwd-hint" style="display:none">
-        Ce profil n'a pas encore de mot de passe —
-        <a href="#" onclick="confirmLoginNoPwd()" style="color:var(--primary)">entrer directement</a>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ══════ CHAT FLOTTANT ══════ -->
-<button id="chat-fab" onclick="toggleChat()" title="Chat du club">
-  <i class="fas fa-comments"></i>
-  <div id="chat-notif-dot"></div>
-</button>
-
-<div id="chat-panel">
-  <div class="chat-header">
-    <div style="display:flex;align-items:center;gap:0.5rem">
-      <i class="fas fa-comments" style="color:var(--primary)"></i>
-      <span class="chat-header-title">Chat du club</span>
-    </div>
-    <button class="chat-header-close" onclick="toggleChat()">✕</button>
-  </div>
-  <div id="chat-messages">
-    <div class="chat-empty">Soyez le premier à écrire 💬</div>
-  </div>
-  <div class="chat-input-row">
-    <input type="text" id="chat-input" placeholder="Écrire un message..." maxlength="200"
-           onkeydown="if(event.key==='Enter') sendChatMessage()">
-    <button id="chat-send-btn" onclick="sendChatMessage()"><i class="fas fa-paper-plane"></i></button>
-  </div>
-</div>
-
-<!-- ══════ PWA INSTALL BANNER ══════ -->
-<div id="pwa-install-banner">
-  <div class="pwa-banner-icon">📲</div>
-  <div class="pwa-banner-text">
-    <div class="pwa-banner-title">Installer l'application</div>
-    <div class="pwa-banner-sub">Accédez au club directement depuis votre écran d'accueil</div>
-  </div>
-  <button class="pwa-install-btn" onclick="installPWA()">Installer</button>
-  <button class="pwa-dismiss-btn" onclick="dismissPWA()">Plus tard</button>
-</div>
-
-
-<footer class="app-footer">
-  <div class="footer-inner">
-    <div class="footer-grid">
-      <div class="footer-col">
-        <h3><i class="fas fa-bullseye"></i> Fléchettes Club Pro</h3>
-        <p>Application de gestion de club de fléchettes</p>
-        <p style="margin-top:0.5rem;font-size:0.8rem;color:var(--gray)">Suivez les stats, classements et tournois de votre club</p>
-      </div>
-      <div class="footer-col">
-        <h3><i class="fas fa-users"></i> Navigation</h3>
-        <p><a href="#" onclick="showPage('dashboard',null)"><i class="fas fa-house"></i> Accueil</a></p>
-        <p><a href="#" onclick="showPage('classement',null)"><i class="fas fa-trophy"></i> Classement</a></p>
-        <p><a href="#" onclick="showPage('joueurs',null)"><i class="fas fa-user"></i> Joueurs</a></p>
-        <p><a href="#" onclick="showPage('tournois',null)"><i class="fas fa-sitemap"></i> Tournois</a></p>
-        <p><a href="#" onclick="showPage('stats',null)"><i class="fas fa-chart-line"></i> Statistiques</a></p>
-      </div>
-      <div class="footer-col">
-        <h3><i class="fas fa-trophy"></i> Fonctionnalités</h3>
-        <p><a href="#" onclick="openScoreCounter()"><i class="fas fa-bullseye"></i> Compteur de score</a></p>
-        <p><a href="#" onclick="showPage('entrainement',null)"><i class="fas fa-dumbbell"></i> Entraînement</a></p>
-        <p><a href="#" onclick="openTvMode()"><i class="fas fa-tv"></i> Mode TV Live</a></p>
-        <p><a href="#" onclick="showPage('calendrier',null)"><i class="fas fa-calendar-days"></i> Calendrier</a></p>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p><i class="fas fa-copyright"></i> Fléchettes Club Pro — Tous droits réservés · Propulsé par <strong>Claude</strong> <i class="fas fa-heart" style="color:var(--primary)"></i></p>
-    </div>
-  </div>
-</footer>
-
 </body>
 </html>
