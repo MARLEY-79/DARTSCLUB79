@@ -5259,7 +5259,8 @@ let _db = null;
 let _fbUnsubscribe = null;
 let _savePending = false;
 let _saveDebounce = null;
-let _ignoreNextSnapshot = false; // évite le re-render après notre propre save
+let _ignoreNextSnapshot = 0;     // compteur : chaque write incrémente, chaque snapshot ignoré décrémente
+let _localSaveTs = 0;            // timestamp du dernier write local envoyé à Firebase
 let _firebaseReady = false;      // true après le 1er snapshot Firebase reçu
 let _loginInitDone = false;      // évite de lancer initLogin deux fois
 
@@ -5310,9 +5311,10 @@ function _saveToLocalStorage() {
 
 function _saveToFirebase() {
   if (!FIREBASE_ENABLED || !_db) return;
-  _ignoreNextSnapshot = true;
+  _ignoreNextSnapshot++;           // on attend UN snapshot en retour de notre propre write
+  _localSaveTs = Date.now();
   _setSyncStatus('saving');
-  _db.collection('clubs').doc(FB_CLUB_ID).set({
+  const payload = {
     players,
     matches,
     tournois,
@@ -5325,10 +5327,13 @@ function _saveToFirebase() {
     defis,
     ligues,
     trainingPrograms,
-    _lastUpdate: new Date().toISOString()
-  }).then(() => {
+    _lastUpdate: new Date().toISOString(),
+    _savedBy: _scDeviceId          // identifie l'auteur pour éviter les écrasements croisés
+  };
+  _db.collection('clubs').doc(FB_CLUB_ID).set(payload).then(() => {
     _setSyncStatus('ok');
   }).catch(err => {
+    _ignoreNextSnapshot = Math.max(0, _ignoreNextSnapshot - 1); // annule le compteur si le write échoue
     console.error('[Firebase] Erreur sauvegarde:', err);
     _setSyncStatus('error');
     showNotif('⚠ Erreur de sync Firebase. Données sauvegardées localement.', 'error');
@@ -5419,13 +5424,30 @@ function initFirebase() {
     _fbUnsubscribe = _db.collection('clubs').doc(FB_CLUB_ID).onSnapshot(
       { includeMetadataChanges: false },
       (doc) => {
-        if (_ignoreNextSnapshot) {
-          _ignoreNextSnapshot = false;
+        // Ignore nos propres snapshots (compteur décrémental)
+        if (_ignoreNextSnapshot > 0) {
+          _ignoreNextSnapshot--;
           _setSyncStatus('ok');
+          // Si c'est bien notre propre snapshot, déclencher initLogin si nécessaire
+          if (!_firebaseReady) {
+            _firebaseReady = true;
+            if (!_loginInitDone) { _loginInitDone = true; try { initLogin(); } catch(e) {} }
+          }
           return;
         }
         if (doc.exists) {
           const data = doc.data();
+          // Ne pas écraser si on a une sauvegarde locale plus récente en attente
+          const fbTs = data._lastUpdate ? new Date(data._lastUpdate).getTime() : 0;
+          if (_saveDebounce && fbTs < _localSaveTs) {
+            // Notre write local est plus récent — on ignore ce snapshot entrant
+            _setSyncStatus('ok');
+            if (!_firebaseReady) {
+              _firebaseReady = true;
+              if (!_loginInitDone) { _loginInitDone = true; try { initLogin(); } catch(e) {} }
+            }
+            return;
+          }
           _checkNewMatches(data);
           _applyFirebaseData(data);
           _eloVersion++;
@@ -16025,7 +16047,8 @@ function scMultiSync() {
   if (!window._scMultiRoom || typeof _db === 'undefined' || !_db) return;
   const ref = _db.collection('clubs').doc(typeof FB_CLUB_ID !== 'undefined' ? FB_CLUB_ID : 'default').collection('liveMatches').doc(window._scMultiRoom);
   try {
-    ref.set({ ...JSON.parse(JSON.stringify(scState)), updatedAt: Date.now(), updatedBy: _scDeviceId });
+    const payload = { ...JSON.parse(JSON.stringify(scState)), updatedAt: Date.now(), updatedBy: _scDeviceId };
+    ref.set(payload); // set complet volontaire : l'état du jeu doit être atomique
   } catch(e) {}
 }
 
@@ -16047,6 +16070,20 @@ function _scMultiShowBadge(show) {
 const _scNextPlayer_orig = scNextPlayer;
 scNextPlayer = function() {
   _scNextPlayer_orig.apply(this, arguments);
+  if (window._scMultiRoom) setTimeout(scMultiSync, 80);
+};
+
+// Sync après annulation
+const _scUndo_orig = scUndo;
+scUndo = function() {
+  _scUndo_orig.apply(this, arguments);
+  if (window._scMultiRoom) setTimeout(scMultiSync, 80);
+};
+
+// Sync après chaque fléchette saisie (mise à jour live pendant la volée)
+const _scAddDart_orig = scAddDart;
+scAddDart = function() {
+  _scAddDart_orig.apply(this, arguments);
   if (window._scMultiRoom) setTimeout(scMultiSync, 80);
 };
 
