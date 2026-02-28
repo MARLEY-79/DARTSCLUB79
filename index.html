@@ -5417,8 +5417,25 @@ function initFirebase() {
     return;
   }
   try {
-    firebase.initializeApp(FIREBASE_CONFIG);
+    // Évite l'erreur "Firebase App already exists" si la page est rechargée
+    // via cache navigateur / service worker / bfcache
+    if (!firebase.apps || firebase.apps.length === 0) {
+      firebase.initializeApp(FIREBASE_CONFIG);
+    }
     _db = firebase.firestore();
+
+    // Active la persistance hors-ligne (cache local Firestore)
+    // → la page fonctionne même sans réseau et se resynchronise automatiquement
+    _db.enablePersistence({ synchronizeTabs: true }).catch(err => {
+      if (err.code === 'failed-precondition') {
+        // Plusieurs onglets ouverts — persistance désactivée sur cet onglet
+        console.warn('[Firebase] Persistance impossible : plusieurs onglets ouverts.');
+      } else if (err.code === 'unimplemented') {
+        // Navigateur ne supporte pas (ex: Firefox en navigation privée)
+        console.warn('[Firebase] Persistance non supportée sur ce navigateur.');
+      }
+    });
+
     _setSyncStatus('connecting');
     // Écoute en temps réel du document du club
     _fbUnsubscribe = _db.collection('clubs').doc(FB_CLUB_ID).onSnapshot(
