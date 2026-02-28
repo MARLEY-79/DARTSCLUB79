@@ -14488,21 +14488,14 @@ window.addEventListener('appinstalled', () => {
 
 // ── Initialisation de toutes les nouvelles fonctionnalités ──
 (function initNewFeatures() {
-  // Détecter le protocole file:// et désactiver Firebase si besoin
-  const isFileProtocol = window.location.protocol === 'file:';
-  if (isFileProtocol) {
-    console.warn('[App] Ouvert via file:// — Firebase désactivé, mode local uniquement.');
-    _setSyncStatus('disabled');
-  } else {
-    initFirebase();
-  }
-  // Login — immédiat si file://, sinon délai pour attendre Firebase
-  const loginDelay = isFileProtocol ? 0 : 800;
+  // Firebase — toujours activé si la config est remplie
+  initFirebase();
+  // Login — après un court délai pour que Firebase charge d'abord
   setTimeout(() => {
     initLogin();
-  }, loginDelay);
-  // Chat — uniquement si pas file://
-  if (!isFileProtocol) setTimeout(initChat, 1500);
+  }, 800);
+  // Chat — après Firebase
+  setTimeout(initChat, 1500);
   // Rappels
   initReminders();
   // Compteur initial de matchs
